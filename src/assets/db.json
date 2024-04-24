@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "parvin_mehdiyeva",
+      "password": "Parvin123",
+      "name": "Parvin Mehdiyeva",
+      "email": "parvin@mehdiyeva.com",
+      "bookings": [
+        {
+          "id": "a7c20302-38fe-49c2-90b4-1c510f58ba5b",
+          "tableNumber": "",
+          "seatNumber": "5B",
+          "startDate": "",
+          "endDate": ""
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "username": "garay_vahidli",
+      "password": "Garay123",
+      "name": "Garay Vahidli",
+      "email": "garay@vahidli.com",
+      "bookings": [
+        {
+          "id": 1,
+          "tableNumber": "Table 1",
+          "seatNumber": "1B",
+          "startDate": "2024-04-24",
+          "endDate": "2024-04-25"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<section class="cryw0rks-section booking-section">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-md-12">
+            <form class="booking-main" (submit)="onSubmit()">
+              <div class="booking-col">
+                <div class="booking-col-sub">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </div>
+                <div class="booking-col-sub">
+                  <label>CIC Rooms</label>
+                  <select class="js-example-matcher-start" name="state" [(ngModel)]="selectedTable">
+                    <optgroup label="Room1">
+                      <option value="Table1">Table 1</option>
+                      <option value="Table2">Table 2</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="booking-col">
+                <div class="booking-col-sub">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                <div class="booking-col-sub">
+                  <label for="daterange">Tanggal Check In - Check Out</label>
+                  <input type="date" id="checkin" name="checkin" [(ngModel)]="checkInDate" required>
+                  <input type="date" id="checkout" name="checkout" [(ngModel)]="checkOutDate" required>
+              </div>
+              
+              </div>
+
+              <div class="booking-col">
+                <div class="booking-col-sub">
+                  <i class="fa fa-user-o" aria-hidden="true"></i>
+                </div>
+                <div class="booking-col-sub">
+                  <label>Table</label>
+                  <input  name="tableNum" id="tableNum" placeholder="{{selectedSeatId}}" readonly>
+                </div>
+              </div>
+
+              <div class="booking-col booking-col-button">
+                <button type="submit" class="button-booking">Check Availability</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
