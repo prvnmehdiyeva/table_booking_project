@@ -8,11 +8,11 @@
       "email": "parvin@mehdiyeva.com",
       "bookings": [
         {
-          "id": "a7c20302-38fe-49c2-90b4-1c510f58ba5b",
-          "tableNumber": "",
-          "seatNumber": "5B",
-          "startDate": "",
-          "endDate": ""
+          "id": "736ee5b8-4611-4a01-8bfa-abdc30d353c0",
+          "tableNumber": "Table1",
+          "seatNumber": "3B",
+          "startDate": "2024-04-26",
+          "endDate": "2024-05-10"
         }
       ]
     },

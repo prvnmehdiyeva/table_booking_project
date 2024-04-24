@@ -1,139 +1,21 @@
-
 <div class="theatre">
   <div class="screen-side">
     <h3 class="select-text">Please select a seat</h3>
   </div>
   <ol class="cabin">
-    <li class="row row--1">
+    <li class="row mb-4" *ngFor="let row of ['1', '2', '3', '4', '5', '6', '7', '8']">
       <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="1A" (click)="onSeatClicked('1A')" />
-          <label for="1A">1A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="1B" (click)="onSeatClicked('1B')" />
-          <label for="1B">1B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="1C" (click)="onSeatClicked('1C')" />
-          <label for="1C">1C</label>
-        </li>
-      </ol>
-    </li>
-    <li class="row row--2 mb-4">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="2A" (click)="onSeatClicked('2A')" />
-          <label for="2A">2A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="2B" (click)="onSeatClicked('2B')" />
-          <label for="2B">2B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="2C" (click)="onSeatClicked('2C')" />
-          <label for="2C">2C</label>
-        </li>
-        
-      </ol>
-    </li>
-    <li class="row row--3">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="3A" (click)="onSeatClicked('3A')" />
-          <label for="3A">3A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="3B" (click)="onSeatClicked('3B')" />
-          <label for="3B">3B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="3C" (click)="onSeatClicked('3C')" />
-          <label for="3C">3C</label>
-        </li>
-      </ol>
-    </li>
-    <li class="row row--4 mb-4">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" disabled id="4A" (click)="onSeatClicked('4A')" />
-          <label for="4A">Occupied</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="4B" (click)="onSeatClicked('4B')" />
-          <label for="4B">4B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="4C" (click)="onSeatClicked('4C')" />
-          <label for="4C">4C</label>
-        </li>
-      </ol>
-    </li>
-    <li class="row row--5">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="5A" (click)="onSeatClicked('5A')" />
-          <label for="5A">5A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="5B" (click)="onSeatClicked('5B')" />
-          <label for="5B">5B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="5C" (click)="onSeatClicked('5C')" />
-          <label for="5C">5C</label>
-        </li>
-      </ol>
-    </li>
-    <li class="row row--6 mb-4">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="6A" (click)="onSeatClicked('6A')" />
-          <label for="6A">6A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="6B" (click)="onSeatClicked('6B')" />
-          <label for="6B">6B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="6C" (click)="onSeatClicked('6C')" />
-          <label for="6C">6C</label>
-        </li>
-      </ol>
-    </li>
-    <li class="row row--7">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="7A" (click)="onSeatClicked('7A')" />
-          <label for="7A">7A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="7B" (click)="onSeatClicked('7B')" />
-          <label for="7B">7B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="7C" (click)="onSeatClicked('7C')" />
-          <label for="7C">7C</label>
-        </li>
-      </ol>
-    </li>
-    <li class="row row--8 mb-4">
-      <ol class="seats" type="A">
-        <li class="seat">
-          <input type="checkbox" id="8A" (click)="onSeatClicked('8A')" />
-          <label for="8A">8A</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="8B" (click)="onSeatClicked('8B')" />
-          <label for="8B">8B</label>
-        </li>
-        <li class="seat">
-          <input type="checkbox" id="8C" (click)="onSeatClicked('8C')" />
-          <label for="8C">8C</label>
+        <li class="seat" *ngFor="let seat of ['A', 'B', 'C']">
+          <input type="checkbox" 
+                 [id]="row + seat" 
+                 (click)="onSeatClicked(row + seat)" 
+                 [checked]="isSeatSelected(row + seat)" 
+                 [disabled]="isSeatBooked(row + seat)" />
+          <label [for]="row + seat" [ngClass]="{ 'booked-seat': isSeatBooked(row + seat)}" [title]="getAltMessage(isSeatBooked(row + seat))" >{{row}}{{seat}}</label>
+          
         </li>
       </ol>
     </li>
   </ol>
   <button class="btn btn-primary" type="submit" [routerLink]="['/booking']">Book</button>
-
 </div>

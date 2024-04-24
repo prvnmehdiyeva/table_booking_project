@@ -1,3 +1,7 @@
+.disabled-button {
+  opacity: 50%;
+  cursor: not-allowed;
+}
 form.booking-main {
   display: flex;
 }

@@ -41,7 +41,9 @@
               </div>
 
               <div class="booking-col booking-col-button">
-                <button type="submit" class="button-booking">Check Availability</button>
+                <button type="submit" class="button-booking" [disabled]="!selectedTable || !checkInDate || !checkOutDate 
+                || isBooked" [ngClass]="{ 'disabled-button': !selectedTable || !checkInDate || !checkOutDate 
+                || isBooked }" >Check Availability</button>
               </div>
             </form>
           </div>
