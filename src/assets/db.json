@@ -1,36 +1,68 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "parvin_123",
       "username": "parvin_mehdiyeva",
       "password": "Parvin123",
       "name": "Parvin Mehdiyeva",
       "email": "parvin@mehdiyeva.com",
-      "bookings": [
-        {
-          "id": "736ee5b8-4611-4a01-8bfa-abdc30d353c0",
-          "tableNumber": "Table1",
-          "seatNumber": "3B",
-          "startDate": "2024-04-26",
-          "endDate": "2024-05-10"
-        }
-      ]
+      "phone": "(123) 456-7890",
+      "mobile": "(098) 765-4321",
+      "address": "123 Main St, City, Country",
+      "jobTitle": "Frontend Developer"
     },
     {
-      "id": "2",
+      "id": "garay_123",
       "username": "garay_vahidli",
       "password": "Garay123",
       "name": "Garay Vahidli",
       "email": "garay@vahidli.com",
-      "bookings": [
-        {
-          "id": 1,
-          "tableNumber": "Table 1",
-          "seatNumber": "1B",
-          "startDate": "2024-04-24",
-          "endDate": "2024-04-25"
-        }
-      ]
+      "phone": "(321) 654-0987",
+      "mobile": "(987) 321-6540",
+      "address": "456 Elm St, City, Country",
+      "jobTitle": "Full Stack Developer"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "b002-89-ac79-418397a6690c",
+      "email": "parvin@mehdiyeva.com",
+      "tableNumber": "Table1",
+      "seatNumber": "1A",
+      "startDate": "04/19/2024 04:30",
+      "endDate": "04/26/2024 06:30"
+    },
+    {
+      "id": "b002-89-ac79-418397a6690c",
+      "email": "parvin@mehdiyeva.com",
+      "tableNumber": "Table1",
+      "seatNumber": "3C",
+      "startDate": "05/28/2024 09:30",
+      "endDate": "05/29/2024 14:30"
+    },
+    {
+      "id": "e20b6c14-ffb7-456a-b7e4-13863160efdf",
+      "email": "garay@vahidli.com",
+      "tableNumber": "",
+      "seatNumber": "4B",
+      "startDate": "2024-05-08 10:26",
+      "endDate": "2024-05-09 10:26"
+    },
+    {
+      "id": "c140eab8-62d2-4c7c-9e95-2466b3494b28",
+      "email": "garay@vahidli.com",
+      "tableNumber": "",
+      "seatNumber": "2A",
+      "startDate": "2024-04-30 10:29",
+      "endDate": "2024-05-02 10:29"
+    },
+    {
+      "id": "a4735e9b-09b5-4702-ae35-2d977952888d",
+      "email": "garay@vahidli.com",
+      "tableNumber": "",
+      "seatNumber": "3A",
+      "startDate": "2024-05-06 10:37",
+      "endDate": "2024-05-07 10:37"
     }
   ]
 }

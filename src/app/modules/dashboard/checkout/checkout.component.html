@@ -1,0 +1,44 @@
+<div id="wrapper" [style.display]="wrapperVisible ? 'block' : 'none'" (click)="handleWrapperClick($event)">
+  <div id="container">
+    
+    <div id="info">
+      <img id="product" src="../../../../assets/checkout.jpg" />
+    </div>
+
+    <div id="payment" > 
+
+      <form id="checkout" (submit)="onSubmit()">
+
+        <label>Name Surname</label><br>
+        <input id="date" name="startDate" required="true" placeholder="{{ name }}" style="border: none; background-color: transparent;" readonly><br>
+
+        <label>Seat Number</label><br>
+        <input  id="selectedSeat"  [value]="selectedSeat" required="true" placeholder="{{ selectedSeat }}" style="border: none; background-color: transparent;" readonly><br>
+
+        <label>Start/End</label><br>
+        <input id="startDate" name="startDate" [value]="startDate | date:'yyyy-MM-dd HH:mm'" required="true" style="border: none; background-color: transparent;" readonly><br>
+        <input id="endDate" name="endDate" [value]="endDate | date:'yyyy-MM-dd HH:mm'" required="true" style="border: none; background-color: transparent;" readonly><br>
+
+        <button href="#myModal" data-toggle="modal" class="btn" type="submit" name="purchase" value="Book" [disabled]="showButton" (click)="onBookSeatClicked()">Book the seat</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">			
+        <h4 class="modal-title">Successfully added!</h4>	
+      </div>
+      <div class="modal-body">
+        <p>You successfully reserve the seat.</p>
+      </div>
+      <div class="modal-footer">
+  
+        <a class="btn btn-success" data-dismiss="modal" (click)="toBookedpage()">Go Booked page</a>
+      </div>
+    </div>
+  </div>
+</div>

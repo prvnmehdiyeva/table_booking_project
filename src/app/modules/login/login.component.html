@@ -1,48 +1,40 @@
-<section class="p-3 p-md-4 p-xl-5">
-  <div class="container">
-    <div class="card border-light-subtle shadow-sm">
-      <div class="row g-0">
-        <div class="col-12 col-md-6">
-          <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" src="../../../assets/photologin.jpg" alt="BootstrapBrain Logo">
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="card-body p-3 p-md-4 p-xl-5">
-            <div class="row">
-              <div class="col-12">
-                <div class="mb-5">
-                  <h2>CIC Table Booking System</h2>
-                </div>
-              </div>
-            </div>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-              <div class="row gy-3 gy-md-4 overflow-hidden">
-                <div class="col-12">
-                  <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" name="email" id="email" formControlName="email" placeholder="name@example.com" required>
-                </div>
-                <div class="col-12">
-                  <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                  <input type="password" class="form-control" name="password" formControlName="password" id="password" value="" required>
-                </div>
-                
-                <div class="col-12">
-                  <div class="d-grid">
-                    <button class="btn bsb-btn-xl btn-primary" type="submit">Log in</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <div class="row">
-              <div class="col-12">
-                <hr class="mt-5 mb-4 border-secondary-subtle">
-                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                  <a href="#!" class="link-secondary text-decoration-none">Forgot password</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div id="login-page">
+  <div class="background text-center">
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="">
+    </div>
+    <h1>Come to the office <br>and collaborate</h1>
+  </div>
+  <div class="spinner" *ngIf="spinner">
+
+    <mat-spinner class="spin" ></mat-spinner>
+  </div>
+
+  <div class="login">
+    <h2 class="login-title">Sign in</h2>
+    <p class="notice">Please login to access the system</p>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">
+      <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+      <div class="input-email">
+        <i class="fas fa-envelope icon"></i>
+        <input type="email" class="form-control" name="email" id="email" formControlName="email" style="outline: none;" placeholder="Enter your e-mail" required>
       </div>
+      <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+      <div class="input-password">
+        <i class="fas fa-lock icon"></i>
+        <input type="password" class="form-control" name="password" formControlName="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <!-- <div class="checkbox">
+        <label for="remember">
+          <input type="checkbox" name="remember">
+          Remember me
+        </label>
+      </div> -->
+      <button class="bg-color-primary" type="submit"><i class="fas fa-door-open"></i> Log in</button>
+    </form>
+      <a href="#">Forgot your password?</a>
+    <div class="created">
+      <p class="color-primary">Created by <a href="https://www.caspianic.com/">Caspian Innovation Center</a></p>
     </div>
   </div>
-</section>
+</div>

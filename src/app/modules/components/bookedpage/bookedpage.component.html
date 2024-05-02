@@ -1,0 +1,60 @@
+
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row p-0">
+      <div class="col-md-12">
+        <div class="table-wrap">
+          <table class="table table-responsive-xl">
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Seat</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="userBooked$ | async as booked">
+              <tr *ngFor="let booking of booked" class="alert" role="alert">
+                <td class="border-bottom-0">
+                  <label class="checkbox-wrap checkbox-primary">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </td>
+                <td class="d-flex align-items-center border-bottom-0">
+                  <div class="pl-3 email">
+                    <span>{{ booking.startDate }}</span>
+                  </div>
+                </td>
+                <td class="border-bottom-0">{{ booking.endDate }}</td>
+                <td class="status border-bottom-0"><span class="waiting">{{ booking.seatNumber }}</span></td>
+                <td class="border-bottom-0 d-flex justify-content-end gap-2">
+                  <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">			
+        <h4 class="modal-title">Confirmation</h4>	
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your seat? This action cannot be undone and you will be unable to recover any data.</p>
+      </div>
+      <div class="modal-footer">
+        <a  class="btn btn-info" data-dismiss="modal">Cancel</a>
+        <a class="btn btn-danger" data-dismiss="modal" (click)="deleteBookingConfirmation()">Yes, delete it!</a>
+      </div>
+    </div>
+  </div>
+</div>

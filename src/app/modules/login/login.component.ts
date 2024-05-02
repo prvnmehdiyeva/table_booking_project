@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup 
+  spinner:boolean=false
   constructor(
     private loginService:LoginserviceService,
     private fb:FormBuilder,
@@ -47,10 +48,11 @@ export class LoginComponent implements OnInit {
           this.sessionService.setItem("loginUser",user)
           console.log("success");
           this.snackBar.open('Login Successful', 'Close', { duration: 2000 });
-
+          
+          this.spinner=true
           setTimeout(()=>{
             this.loginForm.reset()
-            this.router.navigate(['dashboard'])
+            this.router.navigate(['main'])
           },3000)
 
           
