@@ -1,16 +1,19 @@
-<div class="navigation-wrap text-light start-header start-style">
+
+<div class="navigation-wrap text-light start-header start-style" [class.dark]="showAdmin">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <nav class="navbar navbar-expand-md navbar-light">
-          <a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="../../../assets/logocolorful.png" alt=""></a>	
+          <a *ngIf="!showAdmin" class="navbar-brand" href="https://front.codes/" target="_blank"><img src="../../../assets/logocolorful.png" alt=""></a>	
+          <a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="../../../assets/logo.png" alt="" *ngIf="showAdmin"></a>	
           
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           
           <div class="collapse navbar-collapse g-3 justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto py-4 py-md-0 gap-3">
+            <ul class="navbar-nav ml-auto py-4 py-md-0 gap-3 mx-3">
+              
               
               <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                 <a class="nav-link " [routerLink]="['/main']">Home</a>
@@ -21,21 +24,21 @@
               <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                 <a class="nav-link" [routerLink]="['/main/account']">Account</a>
               </li>
-              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 mr-4">
                 <a class="nav-link"[routerLink]="['/main/contact']">Contact</a>
               </li>
               
-                <!-- <div class="form-check form-switch mt-1 ml-3"> -->
-                  <!-- <input class="form-check-input" type="checkbox" role="switch" (click)="toggleDarkMode()" id="flexSwitchCheckChecked" checked> -->
-                  
-                  <!-- <label class="form-check-label " [class.text-dark]="!document.body.classList.contains('dark')" for="flexSwitchCheckChecked">Dark/Light</label> -->
-                <!-- </div> -->
               
             </ul>
+            <button *ngIf="showAdmin" class="btn btn-primary bg-color-primary align-items-center pl-4 pl-md-0 ml-0 ml-md-4">
+              <a class="nav-link " [routerLink]="['/main/admin']">Admin</a>
+            </button>
+            
           </div>
         </nav>		
       </div>
     </div>
   </div>
 </div>
+
 <router-outlet></router-outlet>

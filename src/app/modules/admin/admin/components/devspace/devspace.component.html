@@ -1,0 +1,55 @@
+<div class="container mt-5 pt-5">
+  <app-breadcrumb></app-breadcrumb>
+</div>
+<div class="container d-flex gap-5">
+  <div class="mt-3">
+      <ng-container *ngFor="let row of table1Seats let i = index">
+        <div class="d-block flow-root">
+          <ng-container *ngFor="let seat of table1Id">
+            <div class="seat" 
+            [id]="row + seat" 
+            [class.mx-5]="seat !== 'B'"
+            >
+            {{row}}{{seat}}
+    
+          </div>
+          </ng-container>
+        </div>
+        <div class="space" [class.space]="(i + 1) % 2 === 0"></div>
+      </ng-container>
+      
+    </div>
+    <div class="mt-5 pt-5 pr-5">
+      <h1 class="text-uppercase font-weight-bold">{{roomName}}</h1>
+      <p class="w-75">{{roomDes}}</p>
+      <div class="containerr">
+        <div class="row">
+          <div class="four col-md-3">
+            <div class="counter-box colored">
+              <span #other class="counter">{{rowLength*3}}</span>
+              <p>All seats</p>
+            </div>
+          </div>
+
+          <div class="four col-md-3">
+            <div class="counter-box colored">
+              <span  class="counter">{{available}}</span>
+              <p>Available</p>
+            </div>
+          </div>
+      </div>	
+    </div>
+      <div class="container__item mt-3">
+        <form class="form">
+          <input type="number" class="form__field" placeholder="add a number" [(ngModel)]="numToAdd" name="numToAdd"/>
+          <button type="button" class="btn btn--primary bg-color-primary btn--inside uppercase" (click)="addRow()">Add</button>
+        </form><br>
+        <form class="form">
+          <input type="number" class="form__field" placeholder="add a number" [(ngModel)]="numToDelete" name="numToDelete"/>
+          <button type="button" class="btn btn--primary bg-color-primary btn--inside uppercase" (click)="delRow()">Del</button>
+        </form>
+      </div>
+    </div>
+</div>
+
+

@@ -16,12 +16,12 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">
       <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
       <div class="input-email">
-        <i class="fas fa-envelope icon"></i>
+        <i class="fa fa-envelope icon"></i>
         <input type="email" class="form-control" name="email" id="email" formControlName="email" style="outline: none;" placeholder="Enter your e-mail" required>
       </div>
       <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
       <div class="input-password">
-        <i class="fas fa-lock icon"></i>
+        <i class="fa fa-lock icon"></i>
         <input type="password" class="form-control" name="password" formControlName="password" id="password" placeholder="Enter your password" required>
       </div>
       <!-- <div class="checkbox">

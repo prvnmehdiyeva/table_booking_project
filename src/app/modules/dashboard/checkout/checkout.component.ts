@@ -77,7 +77,7 @@ export class CheckoutComponent implements OnInit {
           {
             id: uuidv4(),
             email: this.userEmail,
-            tableNumber: this.selectedTable,
+            roomNumber: this.selectedTable,
             seatNumber: this.selectedSeat, 
             startDate: formattedStartDate,
             endDate: formattedEndDate,

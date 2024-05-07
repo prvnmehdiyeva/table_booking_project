@@ -6,6 +6,10 @@ import { BookedpageComponent } from './components/bookedpage/bookedpage.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccountComponent } from './components/account/account/account.component';
 import { ContactComponent } from './components/contact/contact/contact.component';
+import { AdminComponent } from './admin/admin/admin.component';
+import { DevspaceComponent } from './admin/admin/components/devspace/devspace.component';
+import { CodeloungeComponent } from './admin/admin/components/codelounge/codelounge.component';
+import { BytelabComponent } from './admin/admin/components/bytelab/bytelab.component';
 
 const routes: Routes = [
   {  
@@ -36,6 +40,22 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+      },
+      {
+        path: 'admin/devspace',
+        component: DevspaceComponent,
+      },
+      {
+        path: 'admin/codelounge',
+        component: CodeloungeComponent,
+      },
+      {
+        path: 'admin/bytelab',
+        component: BytelabComponent,
       }
     ]
   }

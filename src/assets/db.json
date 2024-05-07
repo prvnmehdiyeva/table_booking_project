@@ -21,13 +21,25 @@
       "mobile": "(987) 321-6540",
       "address": "456 Elm St, City, Country",
       "jobTitle": "Full Stack Developer"
+    },
+    {
+      "id": "admin_1",
+      "username": "alexandra_carter",
+      "password": "Admin123",
+      "name": "Alexandra Carter",
+      "email": "alexandra@carter.com",
+      "phone": "(321) 654-0987",
+      "mobile": "(987) 321-6540",
+      "address": "5676 Nzm St, City, Country",
+      "jobTitle": "CEO",
+      "role": "admin"
     }
   ],
   "bookings": [
     {
       "id": "b002-89-ac79-418397a6690c",
       "email": "parvin@mehdiyeva.com",
-      "tableNumber": "Table1",
+      "roomNumber": "1",
       "seatNumber": "1A",
       "startDate": "04/19/2024 04:30",
       "endDate": "04/26/2024 06:30"
@@ -35,23 +47,15 @@
     {
       "id": "b002-89-ac79-418397a6690c",
       "email": "parvin@mehdiyeva.com",
-      "tableNumber": "Table1",
+      "roomNumber": "1",
       "seatNumber": "3C",
       "startDate": "05/28/2024 09:30",
       "endDate": "05/29/2024 14:30"
     },
     {
-      "id": "e20b6c14-ffb7-456a-b7e4-13863160efdf",
-      "email": "garay@vahidli.com",
-      "tableNumber": "",
-      "seatNumber": "4B",
-      "startDate": "2024-05-08 10:26",
-      "endDate": "2024-05-09 10:26"
-    },
-    {
       "id": "c140eab8-62d2-4c7c-9e95-2466b3494b28",
       "email": "garay@vahidli.com",
-      "tableNumber": "",
+      "roomNumber": "1",
       "seatNumber": "2A",
       "startDate": "2024-04-30 10:29",
       "endDate": "2024-05-02 10:29"
@@ -59,10 +63,351 @@
     {
       "id": "a4735e9b-09b5-4702-ae35-2d977952888d",
       "email": "garay@vahidli.com",
-      "tableNumber": "",
+      "roomNumber": "1",
       "seatNumber": "3A",
       "startDate": "2024-05-06 10:37",
       "endDate": "2024-05-07 10:37"
+    },
+    {
+      "id": "ed0a39fb-8661-4d81-bc7c-eb1538638e1b",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "seatNumber": "2B",
+      "startDate": "2024-05-01 12:56",
+      "endDate": "2024-05-09 12:56"
+    },
+    {
+      "id": "ed0a39-8661-4d81-bc7c-eb1538638e1b",
+      "email": "garay@vahidli.com",
+      "roomNumber": "2",
+      "seatNumber": "4B",
+      "startDate": "2024-05-08 12:56",
+      "endDate": "2024-05-09 16:00"
+    },
+    {
+      "id": "ed0a39fb-8661-d81-bc7c-eb1538638e1b",
+      "email": "garay@vahidli.com",
+      "roomNumber": "3",
+      "seatNumber": "2B",
+      "startDate": "2024-05-01 12:56",
+      "endDate": "2024-05-09 12:56"
+    },
+    {
+      "id": "3878200a-5974-430b-bd2d-da8ef7fdc485",
+      "email": "garay@vahidli.com",
+      "roomNumber": "2",
+      "seatNumber": "5C",
+      "startDate": "2024-05-01 14:57",
+      "endDate": "2024-05-20 07:58"
+    },
+    {
+      "id": "4a4a24d1-5029-4863-8625-6ee44261e510",
+      "email": "alexandra@carter.com",
+      "roomNumber": "3",
+      "seatNumber": "3B",
+      "startDate": "2024-05-17 14:03",
+      "endDate": "2024-05-31 16:05"
+    }
+  ],
+  "room1": [
+    {
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "id": "1",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "id": "2",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "id": "3",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "id": "4",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "id": "5",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "room2": [
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "1",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "2",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "3",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "4",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "5",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "6",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "id": "7",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "9",
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "codelounge",
+      "des": "Offering comfortable seating spanning 4 rows, perfect for focused coding sessions and discussions.",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "room3": [
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "1",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "2",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "3",
+      "role": "manager",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "4",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "5",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "6",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "id": "7",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "bytelab",
+      "des": "Offering comfortable seating spanning 5 rows, perfect for focused coding sessions and discussions.",
+      "seats": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
     }
   ]
 }

@@ -8,7 +8,6 @@
           <table class="table table-responsive-xl">
             <thead>
               <tr>
-                <th>&nbsp;</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Seat</th>
@@ -17,12 +16,6 @@
             </thead>
             <tbody *ngIf="userBooked$ | async as booked">
               <tr *ngFor="let booking of booked" class="alert" role="alert">
-                <td class="border-bottom-0">
-                  <label class="checkbox-wrap checkbox-primary">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                </td>
                 <td class="d-flex align-items-center border-bottom-0">
                   <div class="pl-3 email">
                     <span>{{ booking.startDate }}</span>
