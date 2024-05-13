@@ -25,6 +25,7 @@ export class CheckoutComponent implements OnInit {
   showButton: boolean = false;
   name!:string
   @Input() selectedSeat: any = ''; 
+  @Input() selectedRoom: string | null = ''; 
   @Input() showcheckout: boolean = false;
   @Input() startDate: any;
   @Input() endDate:any;
@@ -77,7 +78,7 @@ export class CheckoutComponent implements OnInit {
           {
             id: uuidv4(),
             email: this.userEmail,
-            roomNumber: this.selectedTable,
+            roomNumber: this.selectedRoom,
             seatNumber: this.selectedSeat, 
             startDate: formattedStartDate,
             endDate: formattedEndDate,

@@ -1,25 +1,55 @@
 @import "../../../variables.scss";
 
-
-.mbsc-datepicker-tab-wrapper {
-	justify-content: left !important;
-}
-
-.mbsc-flex,
-.mbsc-flex-col {
-	display: -moz-box;
-	display: flex !important;
-	align-content: flex-start !important;
-	/* margin-top: 18px; */
-	flex-wrap: wrap !important;
-}
-
 $seat-color: $color-primary;
 $seat-color-selected: #005711;
 $seat-notvacantcolor: #ccc;
+$seat-notmanagercolor: #960000;
 $seat-bordercolor: #000;
 $seat-size: 44px;
 $seat-gap: 3px;
+
+.showcase {
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: #777;
+	list-style-type: none;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.showcase li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 10px;
+}
+
+.showcase li small {
+	margin-left: 2px;
+}
+
+.showcase .cube {
+	width: 10px;
+	height: 10px;
+	background-color: #005711;
+	border-radius: 2px;
+	margin-right: 3px;
+
+	&.manager {
+		background-color: $seat-notmanagercolor;
+	}
+
+	&.selected {
+		background-color: $seat-color-selected;
+	}
+
+	&.booked {
+		background-color: $seat-notvacantcolor;
+	}
+
+}
+
+
 
 .map {
 	margin-top: 5%;
@@ -87,12 +117,31 @@ $seat-gap: 3px;
 		cursor: not-allowed;
 		opacity: 60%;
 
+
+
+
 		&:before,
 		&:after {
 			background: $seat-notvacantcolor;
 		}
 	}
+
+	&.notmanager {
+		background: $seat-notmanagercolor;
+		background: linear-gradient($seat-notmanagercolor 0%, $seat-notmanagercolor 70%, $seat-bordercolor 70%, $seat-notmanagercolor 77%);
+		cursor: not-allowed;
+		opacity: 100%;
+
+
+
+
+		&:before,
+		&:after {
+			background: $seat-notmanagercolor;
+		}
+	}
 }
+
 
 .seat-button {
 	position: absolute;
@@ -114,7 +163,7 @@ $seat-gap: 3px;
 
 a {
 	transition: .3s all ease;
-	color: $color-primary;
+
 
 	&:hover,
 	&:focus {
@@ -152,6 +201,47 @@ h5,
 
 .ftco-section {
 	text-align: end;
+
+	.btn-group {
+		.btn {
+			padding: 10px 10px;
+			cursor: pointer;
+			border-width: 1px;
+			border-radius: 4px;
+			font-size: 18px;
+			font-weight: 400;
+			-webkit-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
+			-moz-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
+			box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
+			position: relative;
+			margin-bottom: 20px;
+			@include transition(.3s);
+
+			i {
+				font-size: 22px;
+				line-height: 1;
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				outline: none !important;
+			}
+
+			&.btn-primary {
+				background: $color-primary !important;
+				border-color: $color-primary !important;
+				color: white;
+
+				&:hover,
+				&:focus {
+					border-color: lighten($color-primary, 5%) !important;
+					background: lighten($color-primary, 5%) !important;
+				}
+			}
+		}
+
+	}
 }
 
 .ftco-no-pt {
@@ -162,7 +252,6 @@ h5,
 	padding-bottom: 0;
 }
 
-//HEADING SECTION
 .heading-section {
 	font-size: 28px;
 
@@ -171,7 +260,6 @@ h5,
 	}
 }
 
-//COVER BG
 .img {
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -185,43 +273,6 @@ h5,
 	transform: translateY(-50%);
 }
 
-.btn {
-	padding: 10px 10px;
-	cursor: pointer;
-	border-width: 1px;
-	border-radius: 4px;
-	font-size: 18px;
-	font-weight: 400;
-	-webkit-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
-	-moz-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
-	position: relative;
-	margin-bottom: 20px;
-	@include transition(.3s);
-
-	i {
-		font-size: 22px;
-		line-height: 1;
-	}
-
-	&:hover,
-	&:active,
-	&:focus {
-		outline: none !important;
-	}
-
-	&.btn-primary {
-		background: $color-primary !important;
-		border-color: $color-primary !important;
-		color: white;
-
-		&:hover,
-		&:focus {
-			border-color: lighten($color-primary, 5%) !important;
-			background: lighten($color-primary, 5%) !important;
-		}
-	}
-}
 
 
 $color-1: #f9e090;
@@ -346,5 +397,61 @@ $color-4: #ff8080;
 				}
 			}
 		}
+	}
+}
+
+.res-collapse {
+	display: none;
+}
+
+.open-collapse {
+	display: block;
+}
+
+@media screen and (max-width: 768px) {
+	.res-collapse {
+		display: block;
+	}
+
+	.open-collapse {
+		display: none;
+	}
+
+	.chart .div,
+	.chart .ftco-section {
+		display: none;
+	}
+
+	.showcase {
+		margin-top: 20px;
+		justify-content: flex-start;
+	}
+
+	.res-dashboard {
+		flex-direction: column;
+	}
+
+	.map {
+		margin-top: 15%;
+		display: grid;
+		justify-content: center;
+	}
+
+	.res-date {
+		width: 100%;
+	}
+
+	.res-seats {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.btn-group {
+		min-width: 1rem;
+	}
+
+	.dropdown-toggle::after {
+		display: none;
 	}
 }

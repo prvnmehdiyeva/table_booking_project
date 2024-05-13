@@ -6,6 +6,7 @@ import {DpDatePickerModule} from 'ng2-date-picker';
 import { BookedpageComponent } from './components/bookedpage/bookedpage.component';
 import { AccountComponent } from './components/account/account/account.component';
 import { ContactComponent } from './components/contact/contact/contact.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { ContactComponent } from './components/contact/contact/contact.component
     CommonModule,
     ModulesRoutingModule,
     DpDatePickerModule,
-    
+    ReactiveFormsModule
     
   ]
 })

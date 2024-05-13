@@ -130,3 +130,35 @@ $gr-3: linear-gradient(170deg, #8bc9dd 0%, #007EA7 100%);
 
   }
 }
+
+@media screen and (max-width: 768px) {
+  .card {
+    cursor: pointer;
+  }
+
+  .column {
+    margin-top: 3rem;
+    padding-left: 3rem;
+
+
+    padding-left: 0;
+
+    .card .txt {
+      margin-left: 1rem;
+
+      h1,
+      p {
+        color: rgba(255, 255, 255, 1);
+        opacity: 1;
+      }
+    }
+
+    a {
+      color: rgba(255, 255, 255, 1);
+
+      &:after {
+        width: 10%;
+      }
+    }
+  }
+}

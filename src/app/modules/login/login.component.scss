@@ -1,72 +1,87 @@
 @import "../../../variables.scss";
 
-.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle, .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
   stroke: #8f92a5;
 }
+
 .form-control:focus {
   border-color: #ededed;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0);
-} 
-.spinner{
+}
+
+.spinner {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); 
-  transform: translate(-50%, -50%); 
-  &::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+
+  &::ng-deep .mat-progress-spinner circle,
+  .mat-spinner circle {
     stroke: #000000;
-}
-  .spin{
-    top: 40%;
-  left: 50%;
   }
-  &::before{
+
+  .spin {
+    top: 40%;
+    left: 50%;
+  }
+
+  &::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    z-index: 0; 
+    z-index: 0;
   }
-  
+
 
 }
+
 a {
   color: #666;
   font-size: 14px;
   display: block;
 }
+
 .login-title {
   text-align: center;
 }
+
 #login-page {
   display: flex;
 }
+
 .notice {
   font-size: 13px;
   text-align: center;
   color: #666;
 }
+
 .login {
   width: 40%;
   height: 100vh;
   background: #FFF;
   padding: 70px;
 }
+
 .login a {
   margin-top: 25px;
   text-align: center;
 }
+
 .form-login {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
 }
+
 .form-login label {
   text-align: left;
   font-size: 13px;
@@ -75,6 +90,7 @@ a {
   display: block;
   color: #666;
 }
+
 .input-email,
 .input-password {
   width: 100%;
@@ -85,12 +101,14 @@ a {
   display: flex;
   align-items: center;
 }
+
 .icon {
   padding: 2px;
   color: #666;
   min-width: 36px;
   text-align: center;
 }
+
 input[type="email"],
 input[type="password"] {
   width: 100%;
@@ -100,6 +118,7 @@ input[type="password"] {
   padding: 4px 0;
   outline: none;
 }
+
 button[type="submit"] {
   width: 100%;
   border: 0;
@@ -114,25 +133,29 @@ button[type="submit"] {
   margin-top: 10px;
   transition: ease all 0.3s;
 }
+
 button[type="submit"]:hover {
   opacity: 0.9;
 }
+
 .background {
   width: 60%;
-    padding: 40px;
-    height: 100vh;
-    background: url('../../../assets/photologin.jpg') center no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-content: center;
-    flex-direction: column;
-    gap: 37px;
+  padding: 40px;
+  height: 100vh;
+  background: url('../../../assets/photologin.jpg') center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: center;
+  flex-direction: column;
+  gap: 37px;
 }
-.background .logo img{
+
+.background .logo img {
   max-width: 150px;
 }
+
 .background h1 {
   max-width: 600px;
   font-size: 32px;
@@ -143,6 +166,7 @@ button[type="submit"]:hover {
   padding: 0;
   margin: 0;
 }
+
 .background p {
   max-width: 650px;
   color: #1a1a1a;
@@ -151,21 +175,44 @@ button[type="submit"]:hover {
   padding: 0;
   margin: 15px 0 0 0;
 }
+
 .created {
   margin-top: 40px;
   text-align: center;
 }
+
 .created p {
   font-size: 13px;
   font-weight: bold;
 }
+
 .created a {
   color: #666;
   font-weight: normal;
   text-decoration: none;
   margin-top: 0;
 }
+
 .checkbox label {
   display: inline;
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #login-page {
+    flex-direction: column;
+  }
+
+  .login {
+    width: 100%;
+  }
+
+  .background {
+    width: 100%;
+    height: 40%;
+  }
+
+  .background h1 {
+    display: none;
+  }
 }
