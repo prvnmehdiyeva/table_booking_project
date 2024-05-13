@@ -1,14 +1,14 @@
 <div class="container">
   <div class="main-body" >
-        <div class="row gutters-sm">
+        <div class="row gutters-sm" >
           <div class="col-md-4 mb-3">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                   <div class="mt-3">
-                    <h4>{{user.name}}</h4>
-                    <p class="text-secondary mb-1">{{user.jobTitle}}</p>                    
+                    <h4>{{name}}</h4>
+                    <p class="text-secondary mb-1">{{jobTitle}}</p>                    
                   </div>
                 </div>
               </div>
@@ -17,45 +17,45 @@
           </div>
           <div class="col-md-8">
             <div class="card mb-3">
-              <div class="card-body">
+              <div class="card-body" [formGroup]="myAccount" >
                 <div class="row p-0">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Full Name</h6>
                   </div>
-                  <input class="col-sm-9 text-secondary border-none" placeholder=" {{user.name}}">
+                  <input formControlName="name" class="col-sm-9 text-secondary border-none" placeholder="{{user?.name}}">
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Email</h6>
                   </div>
-                  <input class="col-sm-9 text-secondary border-none" placeholder=" {{user.email}}">
+                  <input formControlName="email" class="col-sm-9 text-secondary border-none" placeholder="{{user?.email}}">
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Phone</h6>
                   </div>
-                  <input class="col-sm-9 text-secondary border-none" placeholder=" {{user.phone}}">
+                  <input type="tel" formControlName="phone" class="col-sm-9 text-secondary border-none" placeholder="{{user?.phone}}">
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Mobile</h6>
                   </div>
-                  <input class="col-sm-9 text-secondary border-none" placeholder=" {{user.mobile}}">
+                  <input type="tel" formControlName="mobile" class="col-sm-9 text-secondary border-none" placeholder="{{user?.mobile}}">
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Address</h6>
                   </div>
-                  <input class="col-sm-9 text-secondary border-none" placeholder=" {{user.address}}">
+                  <input formControlName="address" class="col-sm-9 text-secondary border-none" placeholder="{{user?.address}}">
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-12">
-                    <button class="btn bg-color-primary">Edit</button>
+                    <button class="btn bg-color-primary" href="#myModal" data-toggle="modal" (click)="onSubmit()">Edit</button>
                   </div>
                 </div>
               </div>
@@ -70,3 +70,16 @@
 
       </div>
   </div>
+  <!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">			
+        <h4 class="modal-title">Successfully added!</h4>	
+      </div>
+      <div class="modal-body">
+        <p>You successfully reserve the seat.</p>
+      </div>
+    </div>
+  </div>
+</div>

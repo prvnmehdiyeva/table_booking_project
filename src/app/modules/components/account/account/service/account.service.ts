@@ -24,4 +24,9 @@ export class AccountService {
     return of (null); 
   }
 
+  updateUser(userId: string, newAccount: any){
+    const url = `${this.baseUrl}/users/${userId}`;
+    return this.http.put<any>(url, newAccount);
+  }
+
 }
