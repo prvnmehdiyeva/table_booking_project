@@ -82,6 +82,8 @@ export class AccountComponent implements OnInit {
     if (this.myAccount.valid) {
       const newAccount: User = {
         id: this.user.id,
+        username: this.user.username,
+        password: this.user.password,
         name: this.myAccount.value.name,
         email: this.myAccount.value.email,
         phone: this.myAccount.value.phone,
