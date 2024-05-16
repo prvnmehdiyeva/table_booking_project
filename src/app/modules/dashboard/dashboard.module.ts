@@ -14,6 +14,8 @@ import { DashboardComponent } from './dashboard.component';
 import { MessageService } from 'primeng/api';
 
 import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SortByStatusPipe } from '../components/bookedpage/sort-by-status.pipe';
 
 
 @NgModule({
@@ -31,8 +33,7 @@ import { ToastModule } from 'primeng/toast';
     MatNativeDateModule,
     MatButtonModule,
     MbscModule,
-    ToastModule
-    
+    ToastModule    
   ],
   exports: [
     DashboardComponent

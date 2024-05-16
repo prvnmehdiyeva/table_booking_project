@@ -8,26 +8,31 @@
           <table class="table table-responsive-xl">
             <thead>
               <tr>
+                <th>Status</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Room Number</th>
                 <th>Seat</th>
+                <th>Status</th>
                 <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody *ngIf="userBooked$ | async as booked">
-              <tr *ngFor="let booking of booked" class="alert" role="alert">
+              <tr *ngFor="let booking of booked " class="alert" role="alert">
+                <!-- upcoming, active, ended -->
+                <td class="status border-bottom-0"><span class="{{booking.status}}">{{booking.status}}</span></td> 
                 <td class="d-flex align-items-center border-bottom-0">
                   <div class="pl-3 email">
                     <span>{{ booking.startDate }}</span>
                   </div>
                 </td>
                 <td class="border-bottom-0">{{ booking.endDate }}</td>
-                <td class="status border-bottom-0"><span class="active">{{ booking.roomNumber }}</span></td>
+                <td class="status border-bottom-0"><span class="waiting">{{ booking.roomNumber }}</span></td>
                 <td class="status border-bottom-0"><span class="waiting">{{ booking.seatNumber }}</span></td>
-                <td class="border-bottom-0 d-flex justify-content-end gap-2">
-                  <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)">Delete</button>
+                <td class="border-bottom-0 d-flex justify-content-start gap-2">
+                  <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)" *ngIf="booking.status !== 'ended'">Delete</button>
                 </td>
+               
               </tr>
             </tbody>
           </table>

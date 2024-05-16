@@ -17,9 +17,8 @@
       "password": "Garay123",
       "name": "Garay Vahidli",
       "email": "garay@vahidli.com",
-      "phone": "111-111-11-111",
-      "mobile": "(987) 321-6540",
-      "address": "456 Elm St, City, Country",
+      "mobile": "060-188-79-06",
+      "address": "4566 sllsm Ste, City, Countryyy",
       "jobTitle": "Full Stack Developer"
     },
     {
@@ -41,6 +40,7 @@
       "email": "parvin@mehdiyeva.com",
       "roomNumber": "1",
       "seatNumber": "1A",
+      "status": "upcoming",
       "startDate": "04/19/2024 04:30",
       "endDate": "04/26/2024 06:30"
     },
@@ -48,49 +48,64 @@
       "id": "b002-89-ac79-418397a6690c",
       "email": "parvin@mehdiyeva.com",
       "roomNumber": "1",
+      "status": "ended",
       "seatNumber": "3C",
       "startDate": "05/28/2024 09:30",
       "endDate": "05/29/2024 14:30"
     },
     {
-      "id": "a4735e9b-09b5-4702-ae35-2d977952888d",
-      "email": "garay@vahidli.com",
-      "roomNumber": "1",
-      "seatNumber": "3A",
-      "startDate": "2024-05-06 10:37",
-      "endDate": "2024-05-07 10:37"
-    },
-    {
-      "id": "ed0a39fb-8661-4d81-bc7c-eb1538638e1b",
-      "email": "garay@vahidli.com",
-      "roomNumber": "1",
-      "seatNumber": "2B",
-      "startDate": "2024-05-01 12:56",
-      "endDate": "2024-05-09 12:56"
-    },
-    {
-      "id": "4a4a24d1-5029-4863-8625-6ee44261e510",
-      "email": "alexandra@carter.com",
-      "roomNumber": "3",
-      "seatNumber": "3B",
-      "startDate": "2024-05-17 14:03",
-      "endDate": "2024-05-31 16:05"
-    },
-    {
-      "id": "a6477643-040e-492c-b9d5-e6049f60ee5a",
-      "email": "alexandra@carter.com",
-      "roomNumber": "2",
-      "seatNumber": "4A",
-      "startDate": "2024-05-01 11:35",
-      "endDate": "2024-05-10 11:35"
-    },
-    {
       "id": "1ee1bd16-a474-486b-b52a-f6e024c35d6a",
       "email": "garay@vahidli.com",
       "roomNumber": "1",
+      "status": "ended",
       "seatNumber": "3A",
       "startDate": "2024-05-10 10:23",
       "endDate": "2024-05-11 10:23"
+    },
+    {
+      "id": "feb1e7db-73b5-4117-8acf-f45f261e38f9",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "upcoming",
+      "seatNumber": "5A",
+      "startDate": "2024-05-30 12:23",
+      "endDate": "2024-05-31 14:23"
+    },
+    {
+      "id": "173097b5-07f1-4bf9-83fa-ea13638f8eeb",
+      "email": "alexandra@carter.com",
+      "roomNumber": "1",
+      "status": "upcoming",
+      "seatNumber": "4A",
+      "startDate": "2024-05-23 11:13",
+      "endDate": "2024-05-24 11:13"
+    },
+    {
+      "id": "11885115-ac62-4ce7-90be-17495c0df96c",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "ended",
+      "seatNumber": "5A",
+      "startDate": "2024-05-15 21:48",
+      "endDate": "2024-05-15 21:49"
+    },
+    {
+      "id": "106a668c-614d-4a37-9f3a-6a6d859fd8d4",
+      "email": "alexandra@carter.com",
+      "roomNumber": "1",
+      "status": "ended",
+      "seatNumber": "5A",
+      "startDate": "2024-05-15 21:51",
+      "endDate": "2024-05-15 21:52"
+    },
+    {
+      "id": "548493cc-2822-45d6-b410-12b22039a5bd",
+      "email": "alexandra@carter.com",
+      "roomNumber": "3",
+      "status": "active",
+      "seatNumber": "3C",
+      "startDate": "2024-05-15 09:01",
+      "endDate": "2024-05-18 09:01"
     }
   ],
   "room1": [
@@ -169,6 +184,16 @@
     },
     {
       "id": "8",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "9",
       "name": "devspace",
       "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "seats": [

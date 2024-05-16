@@ -102,6 +102,7 @@ body {
 
 .navbar-toggler:focus {
 	outline: none;
+	box-shadow: 0px 0px 0 0rem;
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {

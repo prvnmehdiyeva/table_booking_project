@@ -1,17 +1,19 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnInit, PLATFORM_ID, SimpleChanges } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { StatusService } from './service/status.service';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
-  providers: [DatePipe]
+  providers: [DatePipe],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckoutComponent implements OnInit {
   updateUserBookings$!: Observable<any>;
@@ -24,6 +26,7 @@ export class CheckoutComponent implements OnInit {
   showBookingMessage: boolean = false;
   showButton: boolean = false;
   name!:string
+  status:any
   @Input() selectedSeat: any = ''; 
   @Input() selectedRoom: string | null = ''; 
   @Input() showcheckout: boolean = false;
@@ -39,7 +42,9 @@ export class CheckoutComponent implements OnInit {
     private userService:DashboardService,
     private snackBar: MatSnackBar,
     private datePipe: DatePipe,
-    private router:Router
+    private router:Router,
+    private cdr: ChangeDetectorRef,
+    private statusSrv: StatusService
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +56,12 @@ export class CheckoutComponent implements OnInit {
         this.userEmail = user.email;
 
     }
+  }
+  this.updateStatus()
+}
+ngOnChanges(changes: SimpleChanges): void {
+  if (changes['startDate'] || changes['endDate']) {
+    this.updateStatus();
   }
 }
 
@@ -74,11 +85,14 @@ export class CheckoutComponent implements OnInit {
       if (this.startDate && this.endDate) {
         const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd HH:mm');
         const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd HH:mm');
+
+
       this.updatedUser = 
           {
             id: uuidv4(),
             email: this.userEmail,
             roomNumber: this.selectedRoom,
+            status: this.status,
             seatNumber: this.selectedSeat, 
             startDate: formattedStartDate,
             endDate: formattedEndDate,
@@ -92,8 +106,6 @@ export class CheckoutComponent implements OnInit {
               console.log(this.updatedUser)
               
               this.showButton=true
-              
-        
               console.log('User updated successfully');
             });
         
@@ -106,6 +118,18 @@ export class CheckoutComponent implements OnInit {
   }
   toBookedpage(){
     this.router.navigate(['main/booked'])
+  }
+  updateStatus(): void {
+    const currentTime = new Date();
+    if (this.endDate < currentTime) {
+      this.status = 'over';
+    } else if (this.startDate > currentTime) {
+      this.status = 'upcoming';
+    } else {
+      this.status = 'active';
+    }
+    this.cdr.detectChanges();
+
   }
   
 }

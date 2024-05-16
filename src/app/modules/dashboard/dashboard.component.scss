@@ -47,6 +47,10 @@ $seat-gap: 3px;
 		background-color: $seat-notvacantcolor;
 	}
 
+	&.booked {
+		background-color: $seat-notvacantcolor;
+	}
+
 }
 
 
@@ -132,12 +136,21 @@ $seat-gap: 3px;
 		cursor: not-allowed;
 		opacity: 100%;
 
-
-
-
 		&:before,
 		&:after {
 			background: $seat-notmanagercolor;
+		}
+	}
+
+	&.notValid {
+		background: gray;
+		background: linear-gradient(gray 0%, gray 70%, $seat-bordercolor 70%, gray 77%);
+		cursor: not-allowed;
+		opacity: 100%;
+
+		&:before,
+		&:after {
+			background: gray;
 		}
 	}
 }
@@ -454,4 +467,9 @@ $color-4: #ff8080;
 	.dropdown-toggle::after {
 		display: none;
 	}
+}
+
+.custom-snackbar {
+	background-color: #4d80e4 !important;
+	color: #fff;
 }

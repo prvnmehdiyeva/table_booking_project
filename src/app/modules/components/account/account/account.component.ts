@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { AccountService } from './service/account.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from './models/user';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-account',
@@ -13,8 +14,11 @@ export class AccountComponent implements OnInit {
   user!: User;
   name!: User;
   jobTitle!: User;
+  isSubmit:boolean = true
+  initialFormValue: any;
 
-  constructor(private accountSrv: AccountService, private fb: FormBuilder) {}
+  constructor(private accountSrv: AccountService, private fb: FormBuilder, private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.accountSrv.getUser().subscribe((user: any) => {
@@ -25,60 +29,32 @@ export class AccountComponent implements OnInit {
       this.myAccount.patchValue({
         name: this.user.name,
         email: this.user.email,
-        phone: this.user.phone,
         mobile: this.user.mobile,
         address: this.user.address
       });
+      this.initialFormValue = this.myAccount.value;
+      this.checkFormChanges();
     });
 
     this.myAccount = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required,Validators.maxLength(30)]],
       email: ['', Validators.required],
-      phone:  ['', [Validators.required, this.phoneValidator]] ,
-      mobile: ['', [Validators.required, this.phoneValidator]] ,
+      mobile: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{2}-\d{2}$/)]] ,
       address: ['', Validators.required]
     });
+    this.myAccount.valueChanges.subscribe(() => {
+      this.checkFormChanges();
+    });
+  
   }
-  phoneValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const value = control.value;
-      const valid = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/.test(value);
-      return valid ? null : { invalidPhone: true };
-    };
+  checkFormChanges(): void {
+    const currentFormValue = this.myAccount.value;
+    const isFormChanged = JSON.stringify(currentFormValue) !== JSON.stringify(this.initialFormValue);
+    this.isSubmit = !isFormChanged;
   }
-  validate(control: AbstractControl): { [key: string]: any } | null {
-    return this.phoneValidator()(control);
-  }
-
-  @HostListener('input', ['$event'])
-  onKeyDown(event: KeyboardEvent) {
-    const input = event.target as HTMLInputElement;
-
-    let trimmed = input.value.replace(/\s+/g, '');
-
-    if (trimmed.length > 13) {
-      trimmed = trimmed.substr(0, 13);
-    }
-
-    trimmed = trimmed.replace(/-/g, '');
-
-    let numbers = [];
-
-    numbers.push(trimmed.substr(0, 3));
-    if (trimmed.substr(3, 2) !== "")
-      numbers.push(trimmed.substr(3, 3));
-    if (trimmed.substr(6, 3) !== "")
-      numbers.push(trimmed.substr(6, 2));
-    if (trimmed.substr(8, 4) !== "")
-      numbers.push(trimmed.substr(8, 2));
-    if (trimmed.substr(10, 8) !== "")
-      numbers.push(trimmed.substr(10, 2));
-    input.value = numbers.join('-');
-  }
-
-
-
+  
   onSubmit(): void {
+    
     if (this.myAccount.valid) {
       const newAccount: User = {
         id: this.user.id,
@@ -86,17 +62,27 @@ export class AccountComponent implements OnInit {
         password: this.user.password,
         name: this.myAccount.value.name,
         email: this.myAccount.value.email,
-        phone: this.myAccount.value.phone,
         mobile: this.myAccount.value.mobile,
         address: this.myAccount.value.address,
         jobTitle: this.user.jobTitle,
+        
       };
       
       this.accountSrv.updateUser(this.user.id, newAccount).subscribe(() => {
+        this.showToastMessage()
+        setTimeout(() => {
+          this.isSubmit = true
+        }, 1000);
         
       });
     }
   }
-  
+  showToastMessage() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Your account information added successfully',
+    });
+  }
 
 }

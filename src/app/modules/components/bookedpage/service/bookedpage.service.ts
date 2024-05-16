@@ -20,5 +20,10 @@ export class BookedpageService {
    return this.http.delete<void>(`${this.baseUrl}/bookings/${bookingId}`)
   }
 
+  updateBookingStatus(bookingId: any, newStatus: string): Observable<any> {
+    const url = `${this.baseUrl}/bookings/${bookingId}`;
+    return this.http.patch(url, { status: newStatus });
+  }
+
  
 }

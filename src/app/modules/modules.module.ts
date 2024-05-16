@@ -7,6 +7,8 @@ import { BookedpageComponent } from './components/bookedpage/bookedpage.componen
 import { AccountComponent } from './components/account/account/account.component';
 import { ContactComponent } from './components/contact/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { SortByStatusPipe } from './components/bookedpage/sort-by-status.pipe';
 
 
 @NgModule({
@@ -15,12 +17,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookedpageComponent,
     AccountComponent,
     ContactComponent,
+    SortByStatusPipe,
   ],
   imports: [
     CommonModule,
     ModulesRoutingModule,
     DpDatePickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
     
   ]
 })

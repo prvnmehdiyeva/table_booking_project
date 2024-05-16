@@ -13,73 +13,49 @@
                 </div>
               </div>
             </div>
-            
           </div>
           <div class="col-md-8">
             <div class="card mb-3">
-              <div class="card-body" [formGroup]="myAccount" >
-                <div class="row p-0">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Full Name</h6>
+              <div class="box-body">
+                <form [formGroup]="myAccount">
+                  <div class="my-3 mx-3 col-sm-6 form-group">
+                    <label>Full name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <small class="form-text text-danger" *ngIf="myAccount.get('name')?.errors?.['maxlength']">
+                      Full name must be at most 30 characters
+                    </small>
                   </div>
-                  <input formControlName="name" class="col-sm-9 text-secondary border-none" placeholder="{{user?.name}}">
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Email</h6>
+                  <div class="my-3 mx-3 form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email">
                   </div>
-                  <input formControlName="email" class="col-sm-9 text-secondary border-none" placeholder="{{user?.email}}">
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Phone</h6>
+                  <div class="col-sm-6 my-3 mx-3 form-group">
+                    <label>Mobile phone number</label>
+                    <input type="text" class="form-control" formControlName="mobile">
+                    <small class="form-text text-danger" *ngIf="myAccount.get('mobile')?.errors?.['pattern']">
+                      Phone number must match the pattern: 000-000-00-00
+                    </small>
+                    
                   </div>
-                  <input type="tel" formControlName="phone" class="col-sm-9 text-secondary border-none" placeholder="{{user?.phone}}">
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Mobile</h6>
+                  <div class="my-3 mx-3 form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" formControlName="address">
                   </div>
-                  <input type="tel" formControlName="mobile" class="col-sm-9 text-secondary border-none" placeholder="{{user?.mobile}}">
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Address</h6>
-                  </div>
-                  <input formControlName="address" class="col-sm-9 text-secondary border-none" placeholder="{{user?.address}}">
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <button class="btn bg-color-primary" href="#myModal" data-toggle="modal" (click)="onSubmit()">Edit</button>
-                  </div>
-                </div>
+                  
+                  <button pButton pRipple label="Show" class="my-3 mx-3 btn bg-color-primary" (click)="onSubmit()" [disabled]="isSubmit">Edit</button>
+                </form>
+                <p-toast
+                  [style.margin-top.px]="50"
+                  [showTransformOptions]="'translateY(100%)'"
+                  [showTransitionOptions]="'1000ms'"
+                  [hideTransitionOptions]="'1000ms'"
+                  [showTransformOptions]="'translateX(100%)'"
+          ></p-toast>
               </div>
             </div>
-
-            
-
-
-
           </div>
         </div>
-
-      </div>
-  </div>
-  <!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-  <div class="modal-dialog modal-confirm">
-    <div class="modal-content">
-      <div class="modal-header">			
-        <h4 class="modal-title">Successfully added!</h4>	
-      </div>
-      <div class="modal-body">
-        <p>You successfully reserve the seat.</p>
+        
       </div>
     </div>
-  </div>
-</div>
+   

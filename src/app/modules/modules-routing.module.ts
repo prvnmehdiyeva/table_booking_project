@@ -10,6 +10,7 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { DevspaceComponent } from './admin/admin/components/devspace/devspace.component';
 import { CodeloungeComponent } from './admin/admin/components/codelounge/codelounge.component';
 import { BytelabComponent } from './admin/admin/components/bytelab/bytelab.component';
+import { AdminGuard } from './admin/admin.guard';
 
 const routes: Routes = [
   {  
@@ -41,21 +42,29 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent
       },
+     
       {
         path: 'admin',
-        component: AdminComponent,
-      },
-      {
-        path: 'admin/devspace',
-        component: DevspaceComponent,
-      },
-      {
-        path: 'admin/codelounge',
-        component: CodeloungeComponent,
-      },
-      {
-        path: 'admin/bytelab',
-        component: BytelabComponent,
+        canActivate: [AdminGuard], 
+        children: [
+         
+          {
+            path: '',
+            component: AdminComponent,
+          },
+          {
+            path: 'devspace',
+            component: DevspaceComponent,
+          },
+          {
+            path: 'codelounge',
+            component: CodeloungeComponent,
+          },
+          {
+            path: 'bytelab',
+            component: BytelabComponent,
+          }
+        ],
       }
     ]
   }

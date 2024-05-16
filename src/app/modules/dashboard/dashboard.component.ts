@@ -6,7 +6,7 @@ import { DOCUMENT } from '@angular/common';
 import { momentTimezone } from '@mobiscroll/angular';
 import moment from 'moment-timezone';
 import { CommonService } from '../../commonService/common.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 momentTimezone.moment = moment;
 @Component({
   selector: 'app-dashboard',
@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
   public momentPlugin = momentTimezone;
   public selected!: any;
   showButton: boolean =false;
+  isValid: boolean =false;
   checkoutVisible: boolean = false;
   showAdmin: boolean = false
   showToast: boolean = false
@@ -53,6 +54,12 @@ export class DashboardComponent implements OnInit {
   selectedRoom: string | null = "1";
   managerTable:any
   datesUser: any[] = []
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  endedStartDate:any
+  endedEndDate:any
+
+
     constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) public document: Document,
@@ -88,9 +95,11 @@ export class DashboardComponent implements OnInit {
     this.srv.getBookings().subscribe((data) => {
       const userBookings = data.filter((element: any) => element.email === this.userEmail);
       userBookings.forEach((element: any) => {
+        if(element.status !== 'ended'){
+          console.log(element.status);
           const { startDate, endDate } = element;
           const dateRange = { startDate, endDate };
-  
+         
           let currentDate = new Date(startDate);
           const endDateTime = new Date(endDate);
   
@@ -98,7 +107,7 @@ export class DashboardComponent implements OnInit {
               this.datesUser.push(new Date(currentDate));
               currentDate.setDate(currentDate.getDate() + 1);
           }
-  
+        }
       });
   });
   
@@ -107,12 +116,13 @@ export class DashboardComponent implements OnInit {
 
 
   notManager(seatId: any) {
-    if (seatId === '1A' || seatId === '1B' || seatId === '1C' || seatId === '1D' || seatId === '1E') {
+    if (seatId === '1A' || seatId === '1B' || seatId === '1C' || seatId === '1D' || seatId === '1E')   {
         return !this.showAdmin;
     } else {
         return false;
     }
 }
+
 
 selectRoom(room: string) {
   this.selectedRoom = room;
@@ -130,6 +140,7 @@ getAltMessage(isBooked: boolean, seatId: string): string {
     return isBooked ? 'This seat is already booked' : 'Please, add date and time';
   }
 }
+
 
 onSeatClicked(seatId: string) {
   if (isPlatformBrowser(this.platformId)) {
@@ -159,32 +170,43 @@ handleRangeChange(event: any, roomNumber: string) {
     this.endDate = range[1];
     this.bookedSeats = [];
     this.userService.getBookings().subscribe((data) => {
+      
       data.forEach((booking: any) => {
-          const bookingStartDate = new Date(booking.startDate);
-          const bookingEndDate = new Date(booking.endDate);
-          const startDateTime = new Date(this.startDate);
-          const endDateTime = new Date(this.endDate);
-          if (startDateTime <= bookingEndDate && endDateTime >= bookingStartDate && booking.roomNumber === this.selectedRoom) {
-            this.bookedSeats.push(booking.seatNumber);
+        const bookingStartDate = new Date(booking.startDate);
+        const bookingEndDate = new Date(booking.endDate);
+        const startDateTime = new Date(this.startDate);
+        const endDateTime = new Date(this.endDate);
+        
 
-            let datesCurrent: any[] = [];
-          let currentDate = new Date(startDateTime);
-          while (currentDate <= endDateTime) {
-            datesCurrent.push(new Date(currentDate));
-            currentDate.setDate(currentDate.getDate() + 1);
-          }
+        if (startDateTime <= bookingEndDate && endDateTime >= bookingStartDate && booking.roomNumber === this.selectedRoom) {
+          this.bookedSeats.push(booking.seatNumber);
+        }
+        
+        let datesCurrent: any[] = [];
+        let currentDate = new Date(startDateTime);
+        while (currentDate <= endDateTime) {
+          datesCurrent.push(new Date(currentDate));
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+        if (this.hasDuplicateDates(datesCurrent)) {
+          this.showToast = true;
+          this.isValid = true;
+          this.snackBar.open("It is not allowed to book a seat on the same day twice.", 'Close', {
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+            duration: 4000,
+            panelClass: ['custom-snackbar']
+          });
+        } else {
+          this.isValid = false; 
+        }
+        
+      });
 
-          if (this.hasDuplicateDates(datesCurrent)) {
-            this.showToast = true
-            this.snackBar.open("It is not allowed to book a seat on the same day twice.", 'Close', {
-              duration: 2000 
-            });
-                      }
-          }
-        });
-      })
+    });
   }
 }
+
 hasDuplicateDates(datesCurrent: Date[]): boolean {
   for (let date of datesCurrent) {
     for (let userDate of this.datesUser) {
@@ -193,7 +215,6 @@ hasDuplicateDates(datesCurrent: Date[]): boolean {
       }
     }
   }
-  console.log("object2");
   return false;
 }
 
