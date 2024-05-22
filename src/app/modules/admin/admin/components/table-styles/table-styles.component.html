@@ -1,0 +1,122 @@
+<div class="style-grid" *ngIf="selectedStyle === 'styleSingle1'">
+  <ng-container *ngFor="let row of style2Seats; let i = index">
+      
+      <ng-container>
+        <div 
+        class="seat"
+        [id]="i + 1"
+        (click)="onSeatClicked(i + 1)"
+        [title]="getAltMessage(isSeatBooked(i + 1), i + 1)"
+        [class.notValid]="isValid"
+        [class.selected]="toggleSelection(i + 1)"
+        [class.notvacant]="isSeatBooked(i + 1)" 
+        [class.notmanager]="notManager(i + 1)"
+        (mouseenter)="showButton = true"
+        (mouseleave)="showButton = false"
+        
+        [class.seatB]="i % 3 === 1"
+        >
+        {{ (i + 1) }}
+        
+        <button *ngIf="!isSeatBooked((i + 1)) && showButton && startDate && endDate" 
+                            class="mt-3 btn btn-dark text-light seat-button" 
+                            (click)="toggleCheckout(i + 1)" 
+                            [disabled]="isValid">Reserve</button>
+      </div>
+      </ng-container>
+  </ng-container>
+</div>
+<div class="mt-5 style-grid" *ngIf="selectedStyle === 'styleSingle2'">
+  <ng-container  *ngFor="let row of style2Seats; let i = index">
+      <div class="mb-3">
+      <ng-container>
+        <div 
+        class="seat"
+        [id]="i + 1"
+        (click)="onSeatClicked(i + 1)"
+        [title]="getAltMessage(isSeatBooked(i + 1), i + 1)"
+        [class.notValid]="isValid"
+        [class.selected]="toggleSelection(i + 1)"
+        [class.notvacant]="isSeatBooked(i + 1)" 
+        [class.notmanager]="notManager(i + 1)"
+        (mouseenter)="showButton = true"
+        (mouseleave)="showButton = false"
+        
+        [class.seatLeftA]="i % 3 === 0"
+        [class.seatLeftB]="i % 3 === 1"
+        
+        >
+        {{ (i + 1)  }}
+        <button *ngIf="!isSeatBooked((i + 1)) && showButton && startDate && endDate" 
+        class="mt-3 btn btn-dark text-light seat-button" 
+        (click)="toggleCheckout(i + 1)" 
+        [disabled]="isValid">Reserve</button>
+      </div>
+       
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+<div class="mt-4 style-grid" *ngIf="selectedStyle === 'styleSingle3'">
+  <ng-container  *ngFor="let row of style2Seats; let i = index">
+      
+      <ng-container>
+        <div 
+        class="seat"
+        [id]="i + 1"
+        (click)="onSeatClicked(i + 1)"
+        [title]="getAltMessage(isSeatBooked(i + 1), i + 1)"
+        [class.notValid]="isValid"
+        [class.selected]="toggleSelection(i + 1)"
+        [class.notvacant]="isSeatBooked(i + 1)" 
+        [class.notmanager]="notManager(i + 1)"
+        (mouseenter)="showButton = true"
+        (mouseleave)="showButton = false"
+
+        [class.my-5]="i % 3 === 1" 
+        
+        >
+        {{ (i + 1) }}
+        <button *ngIf="!isSeatBooked((i + 1)) && showButton && startDate && endDate" 
+                            class="mt-3 btn btn-dark text-light seat-button" 
+                            (click)="toggleCheckout(i + 1)" 
+                            [disabled]="isValid">Reserve</button>
+        
+      </div>
+       
+      </ng-container>    
+  </ng-container>
+  
+</div>
+<div class="mt-4 ustyle-grid" *ngIf="selectedStyle === 'styleSingle4'">
+  <ng-container *ngFor="let row of style2Seats; let i = index">
+      
+        <div 
+          [ngClass]="{
+             'even-B': (i + 1) % 2 === 0 && i > 0, 
+             'odd-A': (i + 1) % 2 !== 0 && i > 0,
+             'odd-C': (i + 1) % 2 !== 0 && i > 0,
+                    }"
+        >
+        <ng-container>
+          <div class="seat"
+          [id]="i + 1"
+          (click)="onSeatClicked(i + 1)"
+          [title]="getAltMessage(isSeatBooked(i + 1), i + 1)"
+          [class.notValid]="isValid"
+          [class.selected]="toggleSelection(i + 1)"
+          [class.notvacant]="isSeatBooked(i + 1)" 
+          [class.notmanager]="notManager(i + 1)"
+          (mouseenter)="showButton = true"
+          (mouseleave)="showButton = false">
+            {{ (i + 1)}}
+            <button *ngIf="!isSeatBooked((i + 1)) && showButton && startDate && endDate" 
+                            class="mt-3 btn btn-dark text-light seat-button" 
+                            (click)="toggleCheckout(i + 1)" 
+                            [disabled]="isValid">Reserve</button>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+</div>

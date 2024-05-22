@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { CodeloungeComponent } from './components/codelounge/codelounge.component';
 import { BytelabComponent } from './components/bytelab/bytelab.component';
+import { TableStylesComponent } from './components/table-styles/table-styles.component';
+import { SharedModule } from '../../shared/shared.module';
+
 
 
 @NgModule({
@@ -18,12 +21,14 @@ import { BytelabComponent } from './components/bytelab/bytelab.component';
     CounterComponent,
     BreadcrumbComponent,
     CodeloungeComponent,
-    BytelabComponent
+    BytelabComponent,
+
   ],
   imports: [
-    CommonModule,
+    CommonModule, 
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
   ]
 })
 export class AdminModule { }

@@ -7,6 +7,7 @@ import { momentTimezone } from '@mobiscroll/angular';
 import moment from 'moment-timezone';
 import { CommonService } from '../../commonService/common.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { StyleService } from '../../styleservice/style.service';
 momentTimezone.moment = moment;
 @Component({
   selector: 'app-dashboard',
@@ -15,16 +16,6 @@ momentTimezone.moment = moment;
   providers: [DatePipe]
 })
 export class DashboardComponent implements OnInit {
-  // dateRangeOptions: any = {
-  //   display: 'inline',
-  //   controls: ['date', 'date'],
-  //   onSet: (event:any, inst:any) => {
-  //     this.handleRangeChange(event, this.selectedRoom || '');
-  //   }
-  // };
-
-  // selectedDateRange: any;
-
   
   @Output() seatSelected = new EventEmitter<string>();
   roomName!:string
@@ -41,6 +32,8 @@ export class DashboardComponent implements OnInit {
   table2Id:any[]=[]
   table3Seats:any[]=[]
   table3Id:any[]=[]
+  style1Seats:any[]=[]
+  style1Id:any[]=[]
   startDate!: Date; 
   endDate!: Date;
   public momentPlugin = momentTimezone;
@@ -51,14 +44,20 @@ export class DashboardComponent implements OnInit {
   showAdmin: boolean = false
   showToast: boolean = false
   roomNumber:string = '1'
-  selectedRoom: string | null = "1";
+  selectedRoom: any | null = "1";
+  selectedStyle: string | null = 'style3';
   managerTable:any
   datesUser: any[] = []
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   endedStartDate:any
   endedEndDate:any
-
+  style2Seats:any[]=[]
+ @Input() rowLength!:number
+ @Input() doubleSeatLength!:number
+ @Input() numToAdd!: number ; 
+ @Input() numToDelete!: number ;
+ @Input() available!: number
 
     constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -66,12 +65,17 @@ export class DashboardComponent implements OnInit {
     private userService:DashboardService,
     private datePipe: DatePipe,
     private srv:CommonService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private styleSrv:StyleService
 
 
   ) {}
 
    ngOnInit() {
+    this.styleSrv.selectedStyle$.subscribe(style => {
+      this.selectedStyle = style;
+    });
+    
     if (isPlatformBrowser(this.platformId)) {
       const userString = sessionStorage.getItem('loginUser')
       if(userString){
@@ -88,9 +92,11 @@ export class DashboardComponent implements OnInit {
         })
       }
     }
-    this.fetchSeats1()
+    // this.fetchSeats1()
     this.fetchSeats2()
     this.fetchSeats3()
+    this.fetchSeats()
+
 
     this.srv.getBookings().subscribe((data) => {
       const userBookings = data.filter((element: any) => element.email === this.userEmail);
@@ -111,12 +117,32 @@ export class DashboardComponent implements OnInit {
       });
   });
   
-    
   }
 
+  fetchSeats(){
+    this.srv.getSeats1().subscribe((data)=>{
+      console.log(data);
+      this.rowLength = data.length
+     let i = data.length;
+     if (i > 0) {
+     this.style1Seats = [data[0].id, data[1].id];
+     let style2length = i
+     this.style1Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
+     this.style2Seats = Array.from({ length: style2length });
+     this.doubleSeatLength = style2length * 3
+     if (i > 0) {
+      this.style1Id = data[i - 1].seats;
+    }
+
+     console.log(this.style1Seats);
+     console.log(this.style2Seats);
+     
+     }
+    })
+   }
 
   notManager(seatId: any) {
-    if (seatId === '1A' || seatId === '1B' || seatId === '1C' || seatId === '1D' || seatId === '1E')   {
+    if (seatId === '1' || seatId === '2' || seatId === '3')   {
         return !this.showAdmin;
     } else {
         return false;
@@ -124,16 +150,18 @@ export class DashboardComponent implements OnInit {
 }
 
 
-selectRoom(room: string) {
+selectRoom(room: any | null) {
   this.selectedRoom = room;
   this.handleRangeChange({ value: [this.startDate, this.endDate] }, this.selectedRoom);
 }
 
-  toggleSelection(seatId: string):boolean {
-    return this.selectedTable === seatId;
-}
 
-getAltMessage(isBooked: boolean, seatId: string): string {
+
+  toggleSelection(seatId: any):boolean {
+      return this.selectedTable === seatId;
+  }
+
+getAltMessage(isBooked: boolean, seatId: any): string {
   if (this.notManager(seatId)) {
     return 'This seat is managed by a manager';
   } else {
@@ -142,9 +170,10 @@ getAltMessage(isBooked: boolean, seatId: string): string {
 }
 
 
-onSeatClicked(seatId: string) {
+onSeatClicked(seatId: any) {
   if (isPlatformBrowser(this.platformId)) {
     if (!this.bookedSeats.includes(seatId) && !this.notManager(seatId)) {
+      console.log("object");
       sessionStorage.setItem('selectedSeatId', seatId); 
       this.showButton=true
       this.selectedTable = seatId; 
@@ -153,17 +182,18 @@ onSeatClicked(seatId: string) {
     } else {
       console.log('Seat already booked:', seatId);
     }
+      console.log("🚀 ~ DashboardComponent ~ onSeatClicked ~ seatId:", seatId)
   }
 }
 
-isSeatBooked(seatId: string): boolean {
+isSeatBooked(seatId: any): boolean {
   return this.bookedSeats.includes(seatId);
 }
-isSeatManager(seatId: string): boolean {
+isSeatManager(seatId: any): boolean {
   return this.bookedSeats.includes(seatId);
 }
 
-handleRangeChange(event: any, roomNumber: string) {
+handleRangeChange(event: any, roomNumber: any) {
   const range = event.value;
   if (range && range.length === 2) {
     this.startDate = range[0];
@@ -178,7 +208,7 @@ handleRangeChange(event: any, roomNumber: string) {
         const endDateTime = new Date(this.endDate);
         
 
-        if (startDateTime <= bookingEndDate && endDateTime >= bookingStartDate && booking.roomNumber === this.selectedRoom) {
+        if (startDateTime <= bookingEndDate && endDateTime >= bookingStartDate && booking.roomNumber === this.selectedRoom && booking.status !=='ended') {
           this.bookedSeats.push(booking.seatNumber);
         }
         
@@ -218,26 +248,34 @@ hasDuplicateDates(datesCurrent: Date[]): boolean {
   return false;
 }
 
-
-
-
-toggleCheckout(seat:string) {
-  this.selectedTable = seat;
-  this.checkoutVisible = !this.checkoutVisible;
+selectStyle(style: string) {
+  if (isPlatformBrowser(this.platformId)) {
+    this.selectedStyle = style;
+    this.styleSrv.setSelectedStyle(style);
+  }
+}
+toggleCheckout(seat:any) {
+  console.log("Toggle Checkout for seat:", seat);
+  if (this.selectedTable !== seat) {
+    this.selectedTable = seat;
+    this.checkoutVisible = true;
+  } else {
+    this.checkoutVisible = !this.checkoutVisible;
+  }
 }
 
 formatDate(date: Date): string {
   return this.datePipe.transform(date, 'MM/dd/yyyy HH:mm', '+0400', 'az-AZ') || '';
 }
-fetchSeats1(){
-  this.srv.getSeats1().subscribe((data)=>{
-   let i = data.length;
-   this.table1Seats = [data[0].id, data[1].id];
-   this.table1Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
-   this.table1Id = data[i - 1].seats;
-   this.managerTable = data.find((item: any) => item.id === '1') || [];
-  })
- }
+// fetchSeats1(){
+//   this.srv.getSeats1().subscribe((data)=>{
+//    let i = data.length;
+//    this.table1Seats = [data[0].id, data[1].id];
+//    this.table1Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
+//    this.table1Id = data[i - 1].seats;
+//    this.managerTable = data.find((item: any) => item.id === '1') || [];
+//   })
+//  }
  fetchSeats2(){
   this.srv.getSeats2().subscribe((data)=>{
    let i = data.length;
@@ -253,10 +291,11 @@ fetchSeats1(){
    this.roomName=data[0].name
    this.table3Seats = [data[0].id, data[1].id];
    this.table3Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
-   
    this.table3Id = data[i - 1].seats;
   })
  }
+ 
+
  
 
 }

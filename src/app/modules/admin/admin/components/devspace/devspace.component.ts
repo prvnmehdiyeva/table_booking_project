@@ -1,6 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild,AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild,AfterViewInit, Renderer2,Inject,
+  PLATFORM_ID } from '@angular/core';
 import { CommonService } from '../../../../../commonService/common.service';
 import { DevspaceService } from './service/devspace.service';
+import { StyleService } from '../../../../../styleservice/style.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-devspace',
@@ -10,19 +13,26 @@ import { DevspaceService } from './service/devspace.service';
 export class DevspaceComponent implements OnInit {
   @ViewChild('counters') counters!: ElementRef;
 
-  table1Seats:any[]=[]
-  table1Id:any[]=[]
+  style1Seats:any[]=[]
+  style2Seats:any[]=[]
+  style1Id:string[]=[]
+  table2Id:any[]=[]
   roomName!:string
   roomDes!:string
   rowLength!:number
+  doubleSeatLength!:number
   numToAdd!: number ; 
   numToDelete!: number ;
   available!: number
+  selectedStyle: string | null = 'styleSingle4';
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+
     private srv:CommonService,
     private renderer: Renderer2,
-    private devSrv:DevspaceService
+    private devSrv:DevspaceService,
+    private styleSrv:StyleService
   )
   {}
   
@@ -30,16 +40,28 @@ export class DevspaceComponent implements OnInit {
     this.fetchSeats()
     this.availableSeats()
   }
+  
   fetchSeats(){
     this.srv.getSeats1().subscribe((data)=>{
+      console.log(data);
       this.rowLength = data.length
      let i = data.length;
+     if (i > 0) {
      this.roomName=data[0].name
      this.roomDes=data[0].des
-     console.log("🚀 ~ DevspaceComponent ~ this.srv.getSeats ~ this.roomName:", this.roomName)
-     this.table1Seats = [data[0].id, data[1].id];
-     this.table1Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
-     this.table1Id = data[i - 1].seats;
+     this.style1Seats = [data[0].id, data[1].id];
+     let style2length = i
+     this.style1Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
+     this.style2Seats = Array.from({ length: style2length });
+     this.doubleSeatLength = style2length * 3
+     if (i > 0) {
+      this.style1Id = data[i - 1].seats;
+    }
+
+     console.log(this.style1Seats);
+     console.log(this.style2Seats);
+     
+     }
     })
    }
 
@@ -50,8 +72,6 @@ export class DevspaceComponent implements OnInit {
       data.forEach((booked: any) => {
         if (booked.roomNumber === "1") {
          room1BookingCount++; 
-         console.log(this.rowLength);
-         console.log(room1BookingCount);
          this.available = this.rowLength * 3 - room1BookingCount
         }
       });
@@ -69,9 +89,7 @@ export class DevspaceComponent implements OnInit {
             "des": this.roomDes,
             "id": (this.rowLength + 1 + i).toString(),
             "seats": [
-                "A",
-                "B",
-                "C"
+                "A"
             ]
         };
         this.devSrv.addRow(newRow).subscribe(() => {
@@ -94,14 +112,19 @@ delRow(){
 
 
 
+selectStyle(style: string) {
+  if (isPlatformBrowser(this.platformId)) {
+  this.selectedStyle = style;
+  this.styleSrv.setSelectedStyle(style);
+  
+  sessionStorage.setItem("selectedStyle", style)
 
+    if(this.selectedStyle === 'styleSingle1'){
+      this.fetchSeats()
+    } 
 
-
-
-
-
-
-
+  }
+}
 
   //  ngAfterViewInit(): void {
   //   if (this.counters) {

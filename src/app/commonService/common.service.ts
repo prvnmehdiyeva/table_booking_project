@@ -25,5 +25,8 @@ export class CommonService {
   getSeats3(): Observable<any> {
     return this.http.get(`${this.baseUrl}/room3`);
   }
+  getStyle1(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/style1`);
+  }
 
 }

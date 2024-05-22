@@ -63,15 +63,6 @@
       "endDate": "2024-05-11 10:23"
     },
     {
-      "id": "feb1e7db-73b5-4117-8acf-f45f261e38f9",
-      "email": "garay@vahidli.com",
-      "roomNumber": "1",
-      "status": "upcoming",
-      "seatNumber": "5A",
-      "startDate": "2024-05-30 12:23",
-      "endDate": "2024-05-31 14:23"
-    },
-    {
       "id": "173097b5-07f1-4bf9-83fa-ea13638f8eeb",
       "email": "alexandra@carter.com",
       "roomNumber": "1",
@@ -99,77 +90,235 @@
       "endDate": "2024-05-15 21:52"
     },
     {
-      "id": "548493cc-2822-45d6-b410-12b22039a5bd",
+      "id": "86f123df-1a1c-4f2b-a197-9a71f803338f",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "ended",
+      "seatNumber": "group3A",
+      "startDate": "2024-05-01 11:31",
+      "endDate": "2024-05-02 11:31"
+    },
+    {
+      "id": "35fdce1e-000b-4770-9669-f88a1e41666b",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "ended",
+      "seatNumber": "group1A",
+      "startDate": "2024-05-17 11:35",
+      "endDate": "2024-05-18 11:35"
+    },
+    {
+      "id": "0374e895-9bb5-45e0-8a1b-ca12e0397e97",
       "email": "alexandra@carter.com",
-      "roomNumber": "3",
-      "status": "active",
-      "seatNumber": "3C",
-      "startDate": "2024-05-15 09:01",
-      "endDate": "2024-05-18 09:01"
+      "roomNumber": "1",
+      "status": "ended",
+      "seatNumber": "3A",
+      "startDate": "2024-05-17 13:05",
+      "endDate": "2024-05-17 13:06"
+    },
+    {
+      "id": "3c5e1fb3-8f39-418b-996a-a28c427d80cc",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "ended",
+      "seatNumber": 3,
+      "startDate": "2024-04-30 10:30",
+      "endDate": "2024-05-02 10:30"
+    },
+    {
+      "id": "a37fbad5-33ff-496c-bebf-509d1243b4f4",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "upcoming",
+      "seatNumber": 5,
+      "startDate": "2024-06-06 10:45",
+      "endDate": "2024-06-07 10:45"
+    }
+  ],
+  "style1": [
+    {
+      "id": "devspace1",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group1",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace2",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group2",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace3",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group3",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace4",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group4",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "codelounge1",
+      "room": "2",
+      "name": "codelounge",
+      "tableName": "group1",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "codelounge2",
+      "room": "2",
+      "name": "codelounge",
+      "tableName": "group2",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bytelab1",
+      "room": "3",
+      "name": "bytelab",
+      "tableName": "group1",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bytelab2",
+      "room": "3",
+      "name": "bytelab",
+      "tableName": "group2",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace5",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group5",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace6",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group6",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace7",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group7",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace31",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group31",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace32",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group32",
+      "seats": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "devspace33",
+      "room": "1",
+      "name": "devspace",
+      "tableName": "group33",
+      "seats": [
+        "A",
+        "B"
+      ]
     }
   ],
   "room1": [
     {
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "id": "1",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "role": "manager",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
       ]
     },
     {
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "id": "2",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "role": "manager",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
       ]
     },
     {
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "id": "3",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "role": "manager",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
       ]
     },
     {
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "id": "4",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
       ]
     },
     {
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "id": "5",
-      "seats": [
-        "A",
-        "B",
-        "C"
-      ]
-    },
-    {
-      "id": "7",
       "name": "devspace",
       "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
       ]
     },
     {
@@ -177,9 +326,15 @@
       "name": "devspace",
       "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A"
       ]
     },
     {
@@ -187,9 +342,7 @@
       "name": "devspace",
       "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
       ]
     },
     {
@@ -197,9 +350,31 @@
       "name": "devspace",
       "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
       "seats": [
-        "A",
-        "B",
-        "C"
+        "A"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "devspace",
+      "des": "A collaborative environment with ample seating across 3 rows, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A"
       ]
     }
   ],

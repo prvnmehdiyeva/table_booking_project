@@ -18,7 +18,7 @@
               </tr>
             </thead>
             <tbody *ngIf="userBooked$ | async as booked">
-              <tr *ngFor="let booking of booked " class="alert" role="alert">
+              <tr *ngFor="let booking of booked | sortByStatus " class="alert" role="alert">
                 <!-- upcoming, active, ended -->
                 <td class="status border-bottom-0"><span class="{{booking.status}}">{{booking.status}}</span></td> 
                 <td class="d-flex align-items-center border-bottom-0">

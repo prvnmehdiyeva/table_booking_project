@@ -32,6 +32,97 @@ $seat-bordercolor: #000;
 $seat-size: 44px;
 $seat-gap: 3px;
 
+
+.tableFor2 {
+	margin: 20px;
+	margin-left: 3rem;
+	width: 66px;
+	height: 59px;
+	border-radius: 4px;
+	background: #007EA7;
+	background: linear-gradient(90deg, #000000 46%, #015e7d 50%, #000 53%, #000000 38%);
+	position: relative;
+	border: 1px solid #000;
+	margin: 3px;
+	display: inline-block;
+	z-index: 1000;
+
+
+	.seatLeft.selected,
+	.seatRight.selected {
+		background: $seat-color-selected;
+
+	}
+
+	.seatLeft,
+	.seatRight {
+		content: '';
+		display: block;
+		width: 36px;
+		height: 38px;
+		position: absolute;
+		background: $color-primary;
+		bottom: ($seat-size / 8);
+		z-index: 999;
+		cursor: pointer;
+
+
+	}
+
+	.seatRight {
+		right: -32.4px;
+		bottom: 9px;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		border-end-end-radius: 10px;
+		border-start-end-radius: 10px;
+		border-right: 6px solid $seat-bordercolor;
+		border-left: 2px solid white;
+
+	}
+
+	.seatLeft {
+		right: 62px;
+		bottom: 9px;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+		border-end-start-radius: 10px;
+		border-start-start-radius: 10px;
+		border-left: 6px solid $seat-bordercolor;
+		border-right: 2px solid white;
+
+	}
+
+	.seatLeft.notvacant,
+	.seatRight.notvacant {
+		background: $seat-notvacantcolor;
+		cursor: not-allowed;
+		opacity: 60%;
+
+
+
+
+		&:before,
+		&:after {
+			background: $seat-notvacantcolor;
+		}
+	}
+
+
+
+	.seatLeft.notValid,
+	.seatRight.notValid {
+		background: gray;
+		cursor: not-allowed;
+		opacity: 100%;
+
+		&:before,
+		&:after {
+			background: gray;
+		}
+	}
+}
+
 .seat {
 	width: $seat-size - ($seat-size / 10);
 	height: $seat-size;

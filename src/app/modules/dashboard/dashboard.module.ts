@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,8 @@ import { MessageService } from 'primeng/api';
 
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SortByStatusPipe } from '../components/bookedpage/sort-by-status.pipe';
+import { TableStylesComponent } from '../admin/admin/components/table-styles/table-styles.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -33,14 +34,18 @@ import { SortByStatusPipe } from '../components/bookedpage/sort-by-status.pipe';
     MatNativeDateModule,
     MatButtonModule,
     MbscModule,
-    ToastModule    
+    ToastModule,    
+    SharedModule, 
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+     
   ],
   providers: [
-    MessageService 
+    MessageService,
+    DatePipe
   ],
+  
  
 })
 export class DashboardModule { }
