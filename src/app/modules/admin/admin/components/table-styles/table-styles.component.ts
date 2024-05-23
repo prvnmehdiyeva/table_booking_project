@@ -34,8 +34,9 @@ styleClass!: any;
 @Output() seatSelected = new EventEmitter<string>();
 @Input()  selectedTable: string | null = null;
 @Input() UserBooking: any = '';
-@Input() startDate!: Date;
+@Input() startDate!: Date; 
 @Input() endDate!: Date;
+
 userStartDate!:any
 userEndDate!:any
 bookedSeats: string[] = [];
@@ -73,6 +74,8 @@ constructor(
 {}
 
 ngOnInit() {
+  console.log("Start Date:", this.startDate);
+    console.log("End Date:", this.endDate);
   this.styleSrv.selectedStyle$.subscribe(style => {
     this.selectedStyle = style;
   });
@@ -116,10 +119,10 @@ ngOnInit() {
         }
       }
     });
-});
+}); 
 
 }
-
+  
 fetchSeats(){
   this.srv.getSeats1().subscribe((data)=>{
     console.log(data);
@@ -143,7 +146,7 @@ fetchSeats(){
  }
 
 notManager(seatId: any) {
-  if (seatId === '1' || seatId === '2' || seatId === '3')   {
+  if (seatId === 1)   {
       return !this.showAdmin;
   } else {
       return false;
@@ -172,6 +175,8 @@ if (this.notManager(seatId)) {
 
 
 onSeatClicked(seatId: any) {
+  this.seatSelected.emit(seatId);
+
 if (isPlatformBrowser(this.platformId)) {
   if (!this.bookedSeats.includes(seatId) && !this.notManager(seatId)) {
     console.log("object");
@@ -205,8 +210,8 @@ if (range && range.length === 2) {
     data.forEach((booking: any) => {
       const bookingStartDate = new Date(booking.startDate);
       const bookingEndDate = new Date(booking.endDate);
-      const startDateTime = new Date(this.startDate);
-      const endDateTime = new Date(this.endDate);
+      const startDateTime = this.startDate;
+      const endDateTime = this.endDate;
       
 
       if (startDateTime <= bookingEndDate && endDateTime >= bookingStartDate && booking.roomNumber === this.selectedRoom && booking.status !=='ended') {

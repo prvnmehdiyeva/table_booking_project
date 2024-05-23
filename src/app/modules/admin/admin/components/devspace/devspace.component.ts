@@ -21,8 +21,8 @@ export class DevspaceComponent implements OnInit {
   roomDes!:string
   rowLength!:number
   doubleSeatLength!:number
-  numToAdd!: number ; 
-  numToDelete!: number ;
+  numToAdd: number | null = null; 
+  numToDelete: number | null = null;
   available!: number
   selectedStyle: string | null = 'styleSingle4';
 
@@ -82,7 +82,8 @@ export class DevspaceComponent implements OnInit {
    }
    
    addRow(){
-    const numToAdd = parseInt(this.numToAdd.toString()); 
+    if(this.numToAdd){
+      const numToAdd = parseInt(this.numToAdd.toString()); 
     for(let i = 0; i < numToAdd; i++) {
         const newRow = {
             "name": this.roomName,
@@ -94,20 +95,25 @@ export class DevspaceComponent implements OnInit {
         };
         this.devSrv.addRow(newRow).subscribe(() => {
             this.fetchSeats();
-            this.numToAdd = 0
+            this.numToAdd = null
         });
     }
+    }
+    
 }
 
 delRow(){
-  const numToDelete = parseInt(this.numToDelete.toString());
+  if(this.numToDelete){
+    const numToDelete = parseInt(this.numToDelete.toString());
   for(let i = 0; i < numToDelete; i++) {
       const rowIdToDelete = this.rowLength - i;
       this.devSrv.delRow(rowIdToDelete).subscribe(() => {
           this.fetchSeats();
-          this.numToDelete = 0
+          this.numToDelete = null;
       });
   }
+  }
+  
 }
 
 

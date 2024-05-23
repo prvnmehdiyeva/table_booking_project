@@ -1,9 +1,8 @@
-
-
-<section class="ftco-section">
+<section class="ftco-section-booked">
   <div class="container">
     <div class="row p-0">
       <div class="col-md-12">
+        
         <div class="table-wrap">
           <table class="table table-responsive-xl">
             <thead>
@@ -17,10 +16,17 @@
                 <th>&nbsp;</th>
               </tr>
             </thead>
-            <tbody *ngIf="userBooked$ | async as booked">
-              <tr *ngFor="let booking of booked | sortByStatus " class="alert" role="alert">
-                <!-- upcoming, active, ended -->
-                <td class="status border-bottom-0"><span class="{{booking.status}}">{{booking.status}}</span></td> 
+            <tbody *ngIf="filteredBookings$ | async as bookings">
+              <div class="d-flex my-2">
+                <select class="form-select" (change)="statusFilterChange($event)">
+                  <option value="all">All</option>
+                  <option value="upcoming">Upcoming</option>
+                  <option value="active">Active</option>
+                  <option value="ended">Ended</option>
+                </select>
+              </div>
+              <tr *ngFor="let booking of bookings | sortByStatus" class="alert" role="alert">
+                <td class="status border-bottom-0"><span class="{{booking.status}}">{{booking.status}}</span></td>
                 <td class="d-flex align-items-center border-bottom-0">
                   <div class="pl-3 email">
                     <span>{{ booking.startDate }}</span>
@@ -32,7 +38,6 @@
                 <td class="border-bottom-0 d-flex justify-content-start gap-2">
                   <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)" *ngIf="booking.status !== 'ended'">Delete</button>
                 </td>
-               
               </tr>
             </tbody>
           </table>
@@ -41,6 +46,7 @@
     </div>
   </div>
 </section>
+
 <!-- Modal HTML -->
 <div id="myModal" class="modal fade">
   <div class="modal-dialog modal-confirm">

@@ -9,11 +9,11 @@ $white: white;
 $danger: red;
 
 body {
+	overflow-y: hidden;
+}
 
-
-	font-weight: normal;
-	background: #f8f9fd;
-	color: lighten($black, 50%);
+.ftco-section-booked {
+	padding: 7em 0;
 }
 
 a {
@@ -47,9 +47,7 @@ h5,
 	background: $primary !important;
 }
 
-.ftco-section {
-	padding: 7em 0;
-}
+
 
 .ftco-no-pt {
 	padding-top: 0;
@@ -59,13 +57,11 @@ h5,
 	padding-bottom: 0;
 }
 
-//HEADING SECTION
 .heading-section {
 	font-size: 28px;
 	color: $black;
 }
 
-//COVER BG
 .img {
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -215,7 +211,6 @@ h5,
 	user-select: none;
 }
 
-/* Hide the browser's default checkbox */
 .checkbox-wrap input {
 	position: absolute;
 	opacity: 0;
@@ -224,15 +219,12 @@ h5,
 	width: 0;
 }
 
-/* Create a custom checkbox */
 .checkmark {
 	position: absolute;
 	top: 0;
 	left: 0;
 }
 
-
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
 	content: "\f0c8";
 	font-family: "FontAwesome";
@@ -243,7 +235,6 @@ h5,
 
 }
 
-/* Show the checkmark when checked */
 .checkbox-wrap {
 	input:checked~.checkmark:after {
 		display: block;
@@ -253,12 +244,41 @@ h5,
 	}
 }
 
-/* Style the checkmark/indicator */
 
 .checkbox-primary {
 	color: $primary;
 
 	input:checked~.checkmark:after {
 		color: $primary;
+	}
+}
+
+
+// select box
+
+
+.form-select {
+	background-color: #f8f9fa;
+	border: 1px solid #ced4da;
+	border-radius: 4px;
+	padding: 8px;
+	font-size: 16px;
+	color: #495057;
+	outline: none;
+
+	&:focus {
+		border-color: none;
+		box-shadow: 0 0 0 rgba(0, 123, 255, 0.5);
+	}
+
+	.option {
+		background-color: #fff;
+		color: #495057;
+		padding: 1rem !important;
+
+		&:hover {
+			background-color: #e9ecef;
+			color: #212529;
+		}
 	}
 }
