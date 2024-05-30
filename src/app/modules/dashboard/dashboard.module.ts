@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +23,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     DashboardComponent,
     CheckoutComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -36,6 +37,8 @@ import { SharedModule } from '../shared/shared.module';
     MbscModule,
     ToastModule,    
     SharedModule, 
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     DashboardComponent,

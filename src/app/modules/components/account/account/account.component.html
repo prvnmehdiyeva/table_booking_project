@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="main-body" >
         <div class="row gutters-sm" >
@@ -21,36 +22,58 @@
                   <div class="my-3 mx-3 col-sm-6 form-group">
                     <label>Full name</label>
                     <input type="text" class="form-control" formControlName="name">
-                    <small class="form-text text-danger" *ngIf="myAccount.get('name')?.errors?.['maxlength']">
+                    <div *ngIf="myAccount.get('name')?.errors 
+                    || myAccount.get('name')?.invalid && (myAccount.get('name')?.dirty || myAccount.get('name')?.touched)" class="alert alert-danger">
+                    <small *ngIf="myAccount.get('name')?.errors?.['maxlength']">
                       Full name must be at most 30 characters
                     </small>
+                      <div *ngIf="myAccount.get('name')?.errors?.['required']">Name is required.</div>
+                    </div>
+                   
                   </div>
                   <div class="my-3 mx-3 form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" formControlName="email">
-                  </div>
-                  <div class="col-sm-6 my-3 mx-3 form-group">
-                    <label>Mobile phone number</label>
-                    <input type="text" class="form-control" formControlName="mobile">
-                    <small class="form-text text-danger" *ngIf="myAccount.get('mobile')?.errors?.['pattern']">
-                      Phone number must match the pattern: 000-000-00-00
-                    </small>
                     
+                    <div *ngIf="myAccount.get('email')?.errors 
+                    || myAccount.get('email')?.invalid && (myAccount.get('email')?.dirty || myAccount.get('email')?.touched)" class="alert alert-danger">
+                    <small *ngIf="myAccount.get('email')?.errors?.['email']">
+                      Please enter a valid email address
+                    </small>
+                      <div *ngIf="myAccount.get('email')?.errors?.['required']">Email is required.</div>
+                    </div>
+                    </div>
+                  <div class="col-sm-6 my-3 mx-3 form-group">
+                    <label for="tel">Mobile phone number</label>
+
+                    <input id="phone" class="form-control" phoneMask [preValue]="myAccount.value.mobile" [phoneControl]="myAccount.controls['mobile']" formControlName="mobile" maxlength="14" 
+                        [ngClass]="(myAccount.controls['mobile'].invalid) ? 'errmsg' : 'validmsg'">
+
+                        <div *ngIf="myAccount.get('mobile')?.errors 
+                          || myAccount.get('mobile')?.invalid && (myAccount.get('mobile')?.dirty || myAccount.get('mobile')?.touched)" class="alert alert-danger">
+                            <div *ngIf="myAccount.get('mobile')?.errors?.['required']">Mobile is required.</div>
+                        </div>
+
                   </div>
                   <div class="my-3 mx-3 form-group">
                     <label>Address</label>
                     <input type="text" class="form-control" formControlName="address">
+                    <div *ngIf="myAccount.get('address')?.errors 
+                    || myAccount.get('address')?.invalid && (myAccount.get('address')?.dirty || myAccount.get('address')?.touched)" class="alert alert-danger">
+                      <div *ngIf="myAccount.get('address')?.errors?.['required']">Address is required.</div>
+                  </div>
                   </div>
                   
                   <button pButton pRipple label="Show" class="my-3 mx-3 btn bg-color-primary" (click)="onSubmit()" [disabled]="isSubmit">Edit</button>
                 </form>
                 <p-toast
                   [style.margin-top.px]="50"
+                  [style.padding.px]="50"
                   [showTransformOptions]="'translateY(100%)'"
                   [showTransitionOptions]="'1000ms'"
                   [hideTransitionOptions]="'1000ms'"
-                  [showTransformOptions]="'translateX(100%)'"
-          ></p-toast>
+                  [showTransformOptions]="'translateX(100%)'">
+              </p-toast>
               </div>
             </div>
           </div>

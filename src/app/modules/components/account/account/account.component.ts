@@ -1,8 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AccountService } from './service/account.service';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './models/user';
 import { MessageService } from 'primeng/api';
+import intlTelInput from 'intl-tel-input';
 
 @Component({
   selector: 'app-account',
@@ -16,11 +17,19 @@ export class AccountComponent implements OnInit {
   jobTitle!: User;
   isSubmit:boolean = true
   initialFormValue: any;
-
+  
   constructor(private accountSrv: AccountService, private fb: FormBuilder, private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
+    const inputElement = document.querySelector("#phone")
+    if(inputElement){
+      intlTelInput(inputElement,{
+        initialCountry:'az',
+        separateDialCode:true,
+        utilsScript:"http://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+      })
+    }
     this.accountSrv.getUser().subscribe((user: any) => {
       this.user = user;
       this.name = user.name;
@@ -38,9 +47,9 @@ export class AccountComponent implements OnInit {
 
     this.myAccount = this.fb.group({
       name: ['', [Validators.required,Validators.maxLength(30)]],
-      email: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{2}-\d{2}$/)]] ,
-      address: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', Validators.required],
+      address: ['', Validators.required] 
     });
     this.myAccount.valueChanges.subscribe(() => {
       this.checkFormChanges();
@@ -65,9 +74,13 @@ export class AccountComponent implements OnInit {
         mobile: this.myAccount.value.mobile,
         address: this.myAccount.value.address,
         jobTitle: this.user.jobTitle,
-        
+        role: ''
       };
-      
+      if (this.user.role === "admin") {
+        newAccount.role = "admin";
+      } else {
+        newAccount.role = "user";
+      }
       this.accountSrv.updateUser(this.user.id, newAccount).subscribe(() => {
         this.showToastMessage()
         setTimeout(() => {

@@ -6,9 +6,11 @@ import {DpDatePickerModule} from 'ng2-date-picker';
 import { BookedpageComponent } from './components/bookedpage/bookedpage.component';
 import { AccountComponent } from './components/account/account/account.component';
 import { ContactComponent } from './components/contact/contact/contact.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { SortByStatusPipe } from './components/bookedpage/sort-by-status.pipe';
+import { PhoneMaskDirective } from '../directives/phone-number.directive';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -18,13 +20,18 @@ import { SortByStatusPipe } from './components/bookedpage/sort-by-status.pipe';
     AccountComponent,
     ContactComponent,
     SortByStatusPipe,
+    PhoneMaskDirective,
   ],
   imports: [
     CommonModule,
     ModulesRoutingModule,
     DpDatePickerModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    FormsModule,
+    MatButtonModule
+    
+
     
   ]
 })

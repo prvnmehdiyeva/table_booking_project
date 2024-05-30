@@ -1,4 +1,5 @@
 export interface User {
+  role: string;
   jobTitle: any;
   password:any;
   username:string

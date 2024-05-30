@@ -1,5 +1,5 @@
 import { MbscModule } from '@mobiscroll/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +16,7 @@ import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     MbscModule,
@@ -27,7 +27,10 @@ import { ToastModule } from 'primeng/toast';
     NgbModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastModule
+    ToastModule,
+    ReactiveFormsModule,
+  
+    
   ],
   providers: [
     provideAnimationsAsync(),

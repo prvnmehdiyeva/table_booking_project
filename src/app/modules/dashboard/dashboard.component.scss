@@ -37,7 +37,6 @@ $seat-gap: 3px;
 		z-index: 999;
 		cursor: pointer;
 
-
 	}
 
 	.seatRight {
@@ -90,6 +89,29 @@ $seat-gap: 3px;
 			background: gray;
 		}
 	}
+}
+
+.seatLeftA {
+	right: 15px;
+	bottom: 0px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-end-start-radius: 10px;
+	border-start-start-radius: 10px;
+	border-top: 6px solid #000;
+	border-bottom: 2px solid white;
+}
+
+.seatLeftB {
+	right: 7px;
+	transform: rotate(0deg);
+	bottom: 48px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-end-start-radius: 10px;
+	border-start-start-radius: 10px;
+	border-top: 6px solid #000;
+	border-bottom: 2px solid white;
 }
 
 .showcase {
@@ -147,11 +169,6 @@ $seat-gap: 3px;
 }
 
 
-
-
-
-
-
 .space {
 	height: $seat-size * 0.5;
 	display: inline-block;
@@ -169,7 +186,7 @@ $seat-gap: 3px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	justify-items: start;
-	margin-right: 3rem;
+	// margin-right: 3rem;
 	gap: 3rem;
 }
 
@@ -233,6 +250,18 @@ $seat-gap: 3px;
 	margin: $seat-gap;
 	display: inline-block;
 	cursor: pointer;
+
+	&.notmanager {
+		background: $seat-notmanagercolor;
+		background: linear-gradient($seat-notmanagercolor 0%, $seat-notmanagercolor 70%, $seat-bordercolor 70%, $seat-notmanagercolor 77%);
+		cursor: not-allowed;
+		opacity: 100%;
+
+		&:before,
+		&:after {
+			background: $seat-notmanagercolor;
+		}
+	}
 
 	&.selected {
 		background: $seat-color-selected;
@@ -430,8 +459,6 @@ $seat-gap: 3px;
 		background: linear-gradient($seat-notvacantcolor 0%, $seat-notvacantcolor 70%, $seat-bordercolor 70%, $seat-notvacantcolor 77%);
 		cursor: not-allowed;
 		opacity: 60%;
-
-
 
 
 		&:before,

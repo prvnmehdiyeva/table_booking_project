@@ -154,7 +154,7 @@ $seat-gap: 3px;
 
 .seatLeftA {
   right: 15px;
-  bottom: -29px;
+  bottom: 0px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-end-start-radius: 10px;
@@ -164,7 +164,7 @@ $seat-gap: 3px;
 }
 
 .seatLeftB {
-  right: 15px;
+  right: 7px;
   transform: rotate(0deg);
   bottom: 48px;
   border-top-right-radius: 10px;

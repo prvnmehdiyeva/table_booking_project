@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit {
         this.userEmail = user.email
         this.srv.getUsers().subscribe((data)=>{
           data.forEach((users:any)=>{
-            if(user.role){
+            if(user.role === "admin"){
               this.showAdmin = true
             }else {
               this.showAdmin = false; 
@@ -142,7 +142,7 @@ export class DashboardComponent implements OnInit {
    }
 
   notManager(seatId: any) {
-    if (seatId === '1A')   {
+    if (seatId === '1A' || seatId === 1)   {
         return !this.showAdmin;
     } else {
         return false;

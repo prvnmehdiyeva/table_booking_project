@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
         const user = JSON.parse(userString); 
         this.srv.getUsers().subscribe((data)=>{
           data.forEach((users:any)=>{
-            if(user.role){
+            if(user.role === "admin"){
               this.showAdmin = true
             }
           })

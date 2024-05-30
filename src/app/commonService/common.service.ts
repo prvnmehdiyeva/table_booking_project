@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../modules/components/account/account/models/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +11,8 @@ export class CommonService {
 
   constructor(private http:HttpClient) { }
 
-  getUsers(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/users`);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/users`);
   }
   getBookings(): Observable<any> {
     return this.http.get(`${this.baseUrl}/bookings`);

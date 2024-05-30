@@ -172,7 +172,7 @@
             </ng-container>
           </div>
           <div class="mt-5 style-grid" *ngIf="selectedStyle === 'styleSingle2'">
-            <ng-container  *ngFor="let row of style2Seats; let i = index">
+            <ng-container *ngFor="let row of style2Seats; let i = index">
                 <div class="mb-3">
                 <ng-container>
                   <div 
@@ -202,6 +202,7 @@
               </div>
             </ng-container>
           </div>
+          
           <div class="mt-4 style-grid" *ngIf="selectedStyle === 'styleSingle3'">
             <ng-container  *ngFor="let row of style2Seats; let i = index">
                 
@@ -304,7 +305,7 @@
                  [class.selected]="toggleSelection(row + seat)"
                  [class.notvacant]="isSeatBooked(row + seat)" 
                  [class.notmanager]="notManager(row + seat)"
-                 [class.notValid]="!isValid"
+                 [class.notValid]="isValid"
                  [title]="getAltMessage(isSeatBooked(row + seat),(row+ seat))"
                  (mouseenter)="showButton = true" 
                  (mouseleave)="showButton = false"
