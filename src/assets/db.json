@@ -55,15 +55,6 @@
       "endDate": "05/29/2024 14:30"
     },
     {
-      "id": "173097b5-07f1-4bf9-83fa-ea13638f8eeb",
-      "email": "alexandra@carter.com",
-      "roomNumber": "1",
-      "status": "3",
-      "seatNumber": "4A",
-      "startDate": "2024-05-23 11:13",
-      "endDate": "2024-05-24 11:13"
-    },
-    {
       "id": "a37fbad5-33ff-496c-bebf-509d1243b4f4",
       "email": "garay@vahidli.com",
       "roomNumber": "1",
@@ -299,7 +290,7 @@
   "room1": [
     {
       "id": "style_1",
-      "style": "styleSingle4"
+      "style": "styleSingle2"
     },
     {
       "id": "1",

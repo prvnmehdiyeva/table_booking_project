@@ -47,7 +47,8 @@ export class AccountComponent implements OnInit {
 
     this.myAccount = this.fb.group({
       name: ['', [Validators.required,Validators.maxLength(30)]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
+    ]],
       mobile: ['', Validators.required],
       address: ['', Validators.required] 
     });
