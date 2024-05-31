@@ -5,6 +5,8 @@ import { DashboardService } from './services/dashboard.service';
 import { DOCUMENT } from '@angular/common';
 import { momentTimezone } from '@mobiscroll/angular';
 import moment from 'moment-timezone';
+import { take } from 'rxjs';
+
 import { CommonService } from '../../commonService/common.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { StyleService } from '../../styleservice/style.service';
@@ -45,7 +47,7 @@ export class DashboardComponent implements OnInit {
   showToast: boolean = false
   roomNumber:string = '1'
   selectedRoom: any | null = "1";
-  selectedStyle: string | null = 'style3';
+  selectedStyle!: string;
   managerTable:any
   datesUser: any[] = []
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
@@ -96,6 +98,7 @@ export class DashboardComponent implements OnInit {
     this.fetchSeats2()
     this.fetchSeats3()
     this.fetchSeats()
+    this.fetchStyle()
 
 
     this.srv.getBookings().subscribe((data) => {
@@ -116,12 +119,11 @@ export class DashboardComponent implements OnInit {
         }
       });
   });
-  
   }
 
   fetchSeats(){
     this.srv.getSeats1().subscribe((data)=>{
-      console.log(data);
+   
       this.rowLength = data.length
      let i = data.length;
      if (i > 0) {
@@ -141,6 +143,12 @@ export class DashboardComponent implements OnInit {
     })
    }
 
+   fetchStyle(){
+    this.srv.getSeats1().subscribe((styleData)=>{
+      this.selectedStyle = styleData[0].style
+    })
+   }
+
   notManager(seatId: any) {
     if (seatId === '1A' || seatId === 1)   {
         return !this.showAdmin;
@@ -157,9 +165,9 @@ selectRoom(room: any | null) {
 
 
 
-  toggleSelection(seatId: any):boolean {
-      return this.selectedTable === seatId;
-  }
+toggleSelection(seatId: any):boolean {
+    return this.selectedTable === seatId;
+}
 
 getAltMessage(isBooked: boolean, seatId: any): string {
   if (this.notManager(seatId)) {
@@ -248,12 +256,6 @@ hasDuplicateDates(datesCurrent: Date[]): boolean {
   return false;
 }
 
-selectStyle(style: string) {
-  if (isPlatformBrowser(this.platformId)) {
-    this.selectedStyle = style;
-    this.styleSrv.setSelectedStyle(style);
-  }
-}
 toggleCheckout(seat:any) {
   console.log("Toggle Checkout for seat:", seat);
   if (this.selectedTable !== seat) {
@@ -286,9 +288,5 @@ formatDate(date: Date): string {
    this.table3Id = data[i - 1].seats;
   })
  }
- 
-
- 
-
 }
 

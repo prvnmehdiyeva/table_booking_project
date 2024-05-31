@@ -19,14 +19,13 @@
             <tbody *ngIf="filteredBookings$ | async as bookings">
               <div class="d-flex my-2">
                 <select class="form-select" (change)="statusFilterChange($event)">
-                  <option value="all">All</option>
-                  <option value="upcoming">Upcoming</option>
-                  <option value="active">Active</option>
-                  <option value="ended">Ended</option>
+                  <option *ngFor="let status of statuses" [value]="status.id">
+                    {{ status.name }}
+                  </option>
                 </select>
               </div>
               <tr *ngFor="let booking of bookings | sortByStatus" class="alert" role="alert">
-                <td class="status border-bottom-0"><span class="{{booking.status}}">{{booking.status}}</span></td>
+                <td class="status border-bottom-0"><span class="{{ getStatusName(booking.status)  }}">{{ getStatusName(booking.status)  }}</span></td>
                 <td class="d-flex align-items-center border-bottom-0">
                   <div class="pl-3 email">
                     <span>{{ booking.startDate }}</span>
@@ -36,7 +35,7 @@
                 <td class="status border-bottom-0"><span class="waiting">{{ booking.roomNumber }}</span></td>
                 <td class="status border-bottom-0"><span class="waiting">{{ booking.seatNumber }}</span></td>
                 <td class="border-bottom-0 d-flex justify-content-start gap-2">
-                  <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)" *ngIf="booking.status !== 'ended'">Delete</button>
+                  <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)" *ngIf="booking.status !== '3'">Delete</button>
                 </td>
               </tr>
             </tbody>

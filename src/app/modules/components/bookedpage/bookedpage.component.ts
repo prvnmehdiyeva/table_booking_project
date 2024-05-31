@@ -17,9 +17,10 @@ export class BookedpageComponent implements OnInit {
   @Input() endDate: any;
   userBooked$!: Observable<any>;
   filteredBookings$!: Observable<any>;
+  statuses: any = [];
   deleteBookingId: string | null = null;
   bookingId: any;
-  selectedStatus: string = 'all';
+  selectedStatus: string = '4';
 
   constructor(
     private bookedservice: BookedpageService,
@@ -29,6 +30,7 @@ export class BookedpageComponent implements OnInit {
 
   ngOnInit() {
     this.getBooked();
+    this.getStatuses()
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['startDate'] || changes['endDate']) {
@@ -36,6 +38,20 @@ export class BookedpageComponent implements OnInit {
         this.updateBookingStatuses(bookings);
       });
     }
+    if (changes['startDate'] || changes['endDate']) {
+      this.userBooked$.subscribe(bookings => {
+        this.deleteEndedBooking(bookings);
+      });
+    }
+  }
+  getStatuses() {
+    this.bookedservice.getStatus().subscribe(statuses => {
+      this.statuses = statuses;
+    });  
+  }
+  getStatusName(statusId: number): string {
+    const status = this.statuses.find((s: { id: string; }) => s.id === statusId.toString());
+    return status ? status.name : '';
   }
   getBooked() {
     if (isPlatformBrowser(this.platformId)) {
@@ -48,10 +64,25 @@ export class BookedpageComponent implements OnInit {
             const userBookings = data.filter((booking: any) => booking.email === this.userEmail);
             this.userBooked$ = of(userBookings);
             this.updateBookingStatuses(userBookings);
+            this.deleteEndedBooking(userBookings)
           }
         });
       }
     }
+  }
+
+  deleteEndedBooking(bookings: any[]) {
+    const currentTime = new Date();
+    bookings.forEach(booking => {
+      const endDate = new Date(booking.endDate);
+      const sevenDaysAfter = new Date(endDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+      if (sevenDaysAfter < currentTime) {
+        this.bookedservice.deleteBooked(booking.id).subscribe(() => {
+          this.getBooked()
+        });
+      }
+    });
   }
 
   updateBookingStatuses(bookings: any[]) {
@@ -60,17 +91,16 @@ export class BookedpageComponent implements OnInit {
       let newStatus: string;
       const startDate = new Date(booking.startDate);
       const endDate = new Date(booking.endDate);
-
+      
       if (endDate < currentTime) {
-        newStatus = 'ended';
+        newStatus = "3";
       } else if (startDate > currentTime) {
-        newStatus = 'upcoming';
+        newStatus = "2";
       } else {
-        newStatus = 'active';
+        newStatus = "1";
       }
-
+ 
       this.bookedservice.updateBookingStatus(booking.id, newStatus).subscribe(response => {
-        console.log('Booking status updated successfully:', response);
         this.userBooked$ = this.userBooked$.pipe(
           map(bookings => {
             return bookings.map((bookingItem: any) => {
@@ -88,9 +118,9 @@ export class BookedpageComponent implements OnInit {
       });
     });
   }
-
+  
   applyStatusFilter() {
-    if (this.selectedStatus === 'all') {
+    if (this.selectedStatus === '4') {       
       this.filteredBookings$ = this.userBooked$;
     } else {
       this.filteredBookings$ = this.userBooked$.pipe(

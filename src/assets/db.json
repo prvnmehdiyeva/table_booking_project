@@ -41,7 +41,7 @@
       "email": "parvin@mehdiyeva.com",
       "roomNumber": "1",
       "seatNumber": "1A",
-      "status": "upcoming",
+      "status": "2",
       "startDate": "04/19/2024 04:30",
       "endDate": "04/26/2024 06:30"
     },
@@ -49,7 +49,7 @@
       "id": "b002-89-ac79-418397a6690c",
       "email": "parvin@mehdiyeva.com",
       "roomNumber": "1",
-      "status": "ended",
+      "status": "3",
       "seatNumber": "3C",
       "startDate": "05/28/2024 09:30",
       "endDate": "05/29/2024 14:30"
@@ -58,34 +58,16 @@
       "id": "173097b5-07f1-4bf9-83fa-ea13638f8eeb",
       "email": "alexandra@carter.com",
       "roomNumber": "1",
-      "status": "ended",
+      "status": "3",
       "seatNumber": "4A",
       "startDate": "2024-05-23 11:13",
       "endDate": "2024-05-24 11:13"
     },
     {
-      "id": "106a668c-614d-4a37-9f3a-6a6d859fd8d4",
-      "email": "alexandra@carter.com",
-      "roomNumber": "1",
-      "status": "ended",
-      "seatNumber": "5A",
-      "startDate": "2024-05-15 21:51",
-      "endDate": "2024-05-15 21:52"
-    },
-    {
-      "id": "0374e895-9bb5-45e0-8a1b-ca12e0397e97",
-      "email": "alexandra@carter.com",
-      "roomNumber": "1",
-      "status": "ended",
-      "seatNumber": "3A",
-      "startDate": "2024-05-17 13:05",
-      "endDate": "2024-05-17 13:06"
-    },
-    {
       "id": "a37fbad5-33ff-496c-bebf-509d1243b4f4",
       "email": "garay@vahidli.com",
       "roomNumber": "1",
-      "status": "upcoming",
+      "status": "2",
       "seatNumber": 5,
       "startDate": "2024-06-06 10:45",
       "endDate": "2024-06-07 10:45"
@@ -94,7 +76,7 @@
       "id": "32b5c924-e5d9-4226-ad43-40b44ba4a31f",
       "email": "garay@vahidli.com",
       "roomNumber": "1",
-      "status": "ended",
+      "status": "3",
       "seatNumber": 4,
       "startDate": "2024-05-03 11:02",
       "endDate": "2024-05-04 11:02"
@@ -103,7 +85,7 @@
       "id": "1bc3c2f7-13dd-4510-b102-11da3bc3babe",
       "email": "garay@vahidli.com",
       "roomNumber": "1",
-      "status": "ended",
+      "status": "3",
       "seatNumber": 4,
       "startDate": "2024-05-04 12:43",
       "endDate": "2024-05-11 12:43"
@@ -112,25 +94,16 @@
       "id": "f9a6b6a7-355b-4864-bc54-94ce9cbe5f79",
       "email": "garay@vahidli.com",
       "roomNumber": "1",
-      "status": "ended",
+      "status": "3",
       "seatNumber": 4,
       "startDate": "2024-05-23 11:02",
       "endDate": "2024-05-25 11:02"
     },
     {
-      "id": "7e805e6e-4b29-4383-94ae-d2f820a8579b",
-      "email": "alexandra@carter.com",
-      "roomNumber": "1",
-      "status": "ended",
-      "seatNumber": 1,
-      "startDate": "2024-05-01 13:13",
-      "endDate": "2024-05-03 13:13"
-    },
-    {
       "id": "67d6fc4f-9513-42df-a90d-4c3d0e682a35",
       "email": "alexandra@carter.com",
       "roomNumber": "1",
-      "status": "upcoming",
+      "status": "2",
       "seatNumber": 1,
       "startDate": "2024-06-05 20:32",
       "endDate": "2024-06-07 20:32"
@@ -139,7 +112,7 @@
       "id": "7b22a3ed-a9fe-43a7-9653-a8c73c8ddc5c",
       "email": "alexandra@carter.com",
       "roomNumber": "1",
-      "status": "active",
+      "status": "1",
       "seatNumber": 3,
       "startDate": "2024-05-27 20:32",
       "endDate": "2024-05-31 20:32"
@@ -148,7 +121,7 @@
       "id": "2f31efa1-920c-4e95-a297-6b200f3b0fd4",
       "email": "garay@vahidli.com",
       "roomNumber": "2",
-      "status": "active",
+      "status": "1",
       "seatNumber": "2B",
       "startDate": "2024-05-27 20:53",
       "endDate": "2024-05-31 20:53"
@@ -157,10 +130,28 @@
       "id": "b77113dc-3b61-4652-9d96-e2963c50ccd2",
       "email": "alexandra@carter.com",
       "roomNumber": "1",
-      "status": "upcoming",
+      "status": "2",
       "seatNumber": 5,
       "startDate": "2024-06-01 09:30",
       "endDate": "2024-06-03 09:30"
+    }
+  ],
+  "status": [
+    {
+      "id": "4",
+      "name": "all"
+    },
+    {
+      "id": "1",
+      "name": "active"
+    },
+    {
+      "id": "2",
+      "name": "upcoming"
+    },
+    {
+      "id": "3",
+      "name": "ended"
     }
   ],
   "style1": [
@@ -306,6 +297,10 @@
     }
   ],
   "room1": [
+    {
+      "id": "style_1",
+      "style": "styleSingle4"
+    },
     {
       "id": "1",
       "name": "devspace",

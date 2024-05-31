@@ -17,10 +17,8 @@ export class DevspaceService {
     return this.http.delete(`${this.baseUrl}/room1/${rowNumber}`);
   }
 
-  addDoubleStyle(newTable:any):Observable<any>{
-    return this.http.post(`${this.baseUrl}/style1`, newTable);
+  updateStyle(newStyle:any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/room1/style_1`, newStyle);
   }
-  delDoubleStyle(tableNumber:number):Observable<any>{
-    return this.http.delete(`${this.baseUrl}/style1/${tableNumber}`);
-  }
+
 }

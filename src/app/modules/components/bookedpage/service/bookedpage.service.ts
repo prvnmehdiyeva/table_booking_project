@@ -14,7 +14,10 @@ export class BookedpageService {
 
   getBookings(){
     return this.http.get(`${this.baseUrl}/bookings`)
-   }
+  }
+  getStatus(){
+    return this.http.get(`${this.baseUrl}/status`)
+  }
 
   deleteBooked(bookingId:any){
    return this.http.delete<void>(`${this.baseUrl}/bookings/${bookingId}`)

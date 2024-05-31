@@ -29,7 +29,7 @@ showAdmin: boolean = false
 @Input() numToAdd!: number ; 
 @Input() numToDelete!: number ;
 @Input() available!: number
-@Input() selectedStyle: string | null = 'styleSingle4';
+@Input() selectedStyle!: string
 styleClass!: any;
 @Output() seatSelected = new EventEmitter<string>();
 @Input()  selectedTable: string | null = null;
@@ -100,6 +100,7 @@ ngOnInit() {
   this.fetchSeats2()
   this.fetchSeats3()
   this.fetchSeats()
+  this.fetchStyle()
 
 
   this.srv.getBookings().subscribe((data) => {
@@ -144,7 +145,11 @@ fetchSeats(){
    }
   })
  }
-
+ fetchStyle(){
+  this.srv.getSeats1().subscribe((styleData)=>{
+    this.selectedStyle = styleData[0].style
+  })
+}
 notManager(seatId: any) {
   if (seatId === 1)   {
       return !this.showAdmin;
@@ -268,18 +273,6 @@ if (this.selectedTable !== seat) {
 }
 }
 
-// formatDate(date: Date): string {
-// return this.datePipe.transform(date, 'MM/dd/yyyy HH:mm', '+0400', 'az-AZ') || '';
-// }
-// fetchSeats1(){
-//   this.srv.getSeats1().subscribe((data)=>{
-//    let i = data.length;
-//    this.table1Seats = [data[0].id, data[1].id];
-//    this.table1Seats = data.slice(0, i).map((item: { id: any; }) => item.id);
-//    this.table1Id = data[i - 1].seats;
-//    this.managerTable = data.find((item: any) => item.id === '1') || [];
-//   })
-//  }
 fetchSeats2(){
 this.srv.getSeats2().subscribe((data)=>{
  let i = data.length;

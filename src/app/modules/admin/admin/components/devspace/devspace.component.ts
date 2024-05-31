@@ -24,7 +24,8 @@ export class DevspaceComponent implements OnInit {
   numToAdd: number | null = null; 
   numToDelete: number | null = null;
   available!: number
-  selectedStyle: string | null = 'styleSingle4';
+  selectedStyle!: string ;
+  newStyle!: any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -37,6 +38,7 @@ export class DevspaceComponent implements OnInit {
   {}
   
   ngOnInit(): void {
+    
     this.fetchSeats()
     this.availableSeats()
   }
@@ -75,10 +77,7 @@ export class DevspaceComponent implements OnInit {
          this.available = this.rowLength * 3 - room1BookingCount
         }
       });
-    
-      console.log("Total bookings for room 1:", room1BookingCount);
     });
-    
    }
    
    addRow(){
@@ -115,49 +114,20 @@ delRow(){
   }
   
 }
-
-
-
-selectStyle(style: string) {
-  if (isPlatformBrowser(this.platformId)) {
-  this.selectedStyle = style;
-  this.styleSrv.setSelectedStyle(style);
-  
-  sessionStorage.setItem("selectedStyle", style)
-
-    if(this.selectedStyle === 'styleSingle1'){
-      this.fetchSeats()
-    } 
-
+  fetchStyle(){
+    this.srv.getSeats1().subscribe((styleData)=>{
+      this.selectedStyle = styleData[0].style
+    })
+  }
+ 
+  selectStyle(style: string): void {
+    const newStyle = {
+      id: "style_1",
+      style: style
+    };
+    this.devSrv.updateStyle(newStyle).subscribe(() => {
+      this.fetchSeats(); 
+      this.fetchStyle()
+    });
   }
 }
-
-  //  ngAfterViewInit(): void {
-  //   if (this.counters) {
-  //     const initialValue = parseInt(this.counters.nativeElement.innerText);
-  //     this.animateCounter(this.counters.nativeElement, initialValue);
-  //   }
-  // }
-
-  // private animateCounter(element: HTMLElement, initialValue: number): void {
-  //   let start = 0;
-  //   let end = initialValue;
-  //   const duration = 4000;
-  //   const range = end - start;
-  //   let current = start;
-  //   const increment = end > start ? 1 : -1;
-  //   const stepTime = Math.abs(Math.floor(duration / range));
-
-  //   const timer = setInterval(() => {
-  //     current += increment;
-  //     this.renderer.setProperty(element, 'innerText', Math.ceil(current).toString());
-  //     if (current === end) {
-  //       clearInterval(timer);
-  //     }
-  //   }, stepTime);
-  // }
-
-  
- 
-   
- }

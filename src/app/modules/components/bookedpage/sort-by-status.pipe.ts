@@ -12,9 +12,9 @@ export class SortByStatusPipe implements PipeTransform {
     
     return bookings.sort((a: any, b: any) => {
       const statusOrder: { [key: string]: number } = {
-        active: 0,
-        upcoming: 1,
-        ended: 2
+        1: 0,
+        2: 1,
+        3: 2
       };
       return statusOrder[a.status] - statusOrder[b.status];
     });

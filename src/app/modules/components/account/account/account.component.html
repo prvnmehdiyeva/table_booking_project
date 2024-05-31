@@ -19,7 +19,7 @@
             <div class="card mb-3">
               <div class="box-body">
                 <form [formGroup]="myAccount">
-                  <div class="my-3 mx-3 col-sm-6 form-group">
+                  <div class="my-3 mx-3 form-group">
                     <label>Full name</label>
                     <input type="text" class="form-control" formControlName="name">
                     <div *ngIf="myAccount.get('name')?.errors 
