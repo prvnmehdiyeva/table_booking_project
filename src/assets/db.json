@@ -18,8 +18,8 @@
       "password": "Garay123",
       "name": "Garay Vahidli",
       "email": "garay@vahidli.com",
-      "mobile": "(051) 000-0004",
-      "address": "4566 sllsm Ste, City, Countryyy",
+      "mobile": "50 000 00 00",
+      "address": "4566 sllsm Ste, City, Country",
       "jobTitle": "Full Stack Developer",
       "role": "user"
     },
@@ -64,33 +64,6 @@
       "endDate": "2024-06-07 10:45"
     },
     {
-      "id": "32b5c924-e5d9-4226-ad43-40b44ba4a31f",
-      "email": "garay@vahidli.com",
-      "roomNumber": "1",
-      "status": "3",
-      "seatNumber": 4,
-      "startDate": "2024-05-03 11:02",
-      "endDate": "2024-05-04 11:02"
-    },
-    {
-      "id": "1bc3c2f7-13dd-4510-b102-11da3bc3babe",
-      "email": "garay@vahidli.com",
-      "roomNumber": "1",
-      "status": "3",
-      "seatNumber": 4,
-      "startDate": "2024-05-04 12:43",
-      "endDate": "2024-05-11 12:43"
-    },
-    {
-      "id": "f9a6b6a7-355b-4864-bc54-94ce9cbe5f79",
-      "email": "garay@vahidli.com",
-      "roomNumber": "1",
-      "status": "3",
-      "seatNumber": 4,
-      "startDate": "2024-05-23 11:02",
-      "endDate": "2024-05-25 11:02"
-    },
-    {
       "id": "67d6fc4f-9513-42df-a90d-4c3d0e682a35",
       "email": "alexandra@carter.com",
       "roomNumber": "1",
@@ -112,7 +85,7 @@
       "id": "2f31efa1-920c-4e95-a297-6b200f3b0fd4",
       "email": "garay@vahidli.com",
       "roomNumber": "2",
-      "status": "1",
+      "status": "3",
       "seatNumber": "2B",
       "startDate": "2024-05-27 20:53",
       "endDate": "2024-05-31 20:53"
@@ -125,6 +98,15 @@
       "seatNumber": 5,
       "startDate": "2024-06-01 09:30",
       "endDate": "2024-06-03 09:30"
+    },
+    {
+      "id": "757260cc-2806-4a2d-9c82-f70f37f21d5f",
+      "email": "garay@vahidli.com",
+      "roomNumber": "1",
+      "status": "2",
+      "seatNumber": 4,
+      "startDate": "2024-08-08 13:26",
+      "endDate": "2024-08-09 13:26"
     }
   ],
   "status": [
@@ -290,7 +272,7 @@
   "room1": [
     {
       "id": "style_1",
-      "style": "styleSingle2"
+      "style": "styleSingle4"
     },
     {
       "id": "1",
@@ -344,41 +326,43 @@
       ]
     },
     {
-      "id": "7",
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across many styles, ideal for team brainstorming and coding sessions.",
-      "seats": [
-        "A"
-      ]
-    },
-    {
       "id": "8",
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across many styles, ideal for team brainstorming and coding sessions.",
       "seats": [
         "A"
       ]
     },
     {
       "id": "9",
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across many styles, ideal for team brainstorming and coding sessions.",
       "seats": [
         "A"
       ]
     },
     {
       "id": "10",
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across many styles, ideal for team brainstorming and coding sessions.",
       "seats": [
         "A"
       ]
     },
     {
       "id": "11",
-      "name": "devspace",
-      "des": "A collaborative environment with ample seating across many styles, ideal for team brainstorming and coding sessions.",
+      "seats": [
+        "A"
+      ]
+    },
+    {
+      "id": "12",
+      "seats": [
+        "A"
+      ]
+    },
+    {
+      "id": "13",
+      "seats": [
+        "A"
+      ]
+    },
+    {
+      "id": "14",
       "seats": [
         "A"
       ]

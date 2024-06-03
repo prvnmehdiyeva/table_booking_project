@@ -4,6 +4,7 @@
       <div class="col-md-12">
         
         <div class="table-wrap">
+          
           <table class="table table-responsive-xl">
             <thead>
               <tr>
@@ -24,6 +25,10 @@
                   </option>
                 </select>
               </div>
+              
+              <tr *ngIf="(filteredBookings$ | async)?.length === 0">
+                <td colspan="7" class="text-center no-bookings-message">No bookings found for the selected status.</td>
+              </tr>
               <tr *ngFor="let booking of bookings | sortByStatus" class="alert" role="alert">
                 <td class="status border-bottom-0"><span class="{{ getStatusName(booking.status)  }}">{{ getStatusName(booking.status)  }}</span></td>
                 <td class="d-flex align-items-center border-bottom-0">
@@ -31,6 +36,8 @@
                     <span>{{ booking.startDate }}</span>
                   </div>
                 </td>
+           
+               
                 <td class="border-bottom-0">{{ booking.endDate }}</td>
                 <td class="status border-bottom-0"><span class="waiting">{{ booking.roomNumber }}</span></td>
                 <td class="status border-bottom-0"><span class="waiting">{{ booking.seatNumber }}</span></td>
@@ -38,10 +45,12 @@
                   <button href="#myModal" class="trigger-btn" data-toggle="modal" type="button" class="btn btn-danger" (click)="setBookingIdToDelete(booking.id)" *ngIf="booking.status !== '3'">Delete</button>
                 </td>
               </tr>
+
             </tbody>
           </table>
         </div>
       </div>
+      
     </div>
   </div>
 </section>

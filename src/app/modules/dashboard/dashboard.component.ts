@@ -74,6 +74,11 @@ export class DashboardComponent implements OnInit {
   ) {}
 
    ngOnInit() {
+    this.srv.getUsers()
+  .pipe(
+take(2)).subscribe((data) => {
+    console.log(data);
+  });
     this.styleSrv.selectedStyle$.subscribe(style => {
       this.selectedStyle = style;
     });
